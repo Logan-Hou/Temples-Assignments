@@ -1,0 +1,239 @@
+\documentclass[11pt]{diazessay} % Font size (can be 10pt, 11pt or 12pt)
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\title{\textbf{A New Proof of Hartman Theorem} } % Title and subtitle
+
+\author{Liguang Hou} % Author and institution
+
+\date{\today} % Date, use \date{} for no date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+\maketitle % Print the title section
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT AND KEYWORDS
+%----------------------------------------------------------------------------------------
+
+%\renewcommand{\abstractname}{Summary} % Uncomment to change the name of the abstract to something else
+
+\begin{abstract}
+	\noindent
+	Hartman's theorem is a well-known theorem on the local topological equivalence of hyperbolic nonlinear ordinary differential systems to linear ordinary differential systems. The theorem is proved by geometric qualitative methods with strong condition restrictions. In this paper, we give a new proof of Hartman's theorem by using differential topological geometry under the condition that the second-order differentiable vector field is changed to the first-order differentiable vector field.
+
+	\vskip 5pt
+
+	\noindent
+	\textit{Keywords:} Hartman theorem, hyperbolic nonlinear ordinary differential systems, local topology, differential topological geometry. % Keywords
+	
+	\noindent
+	\textit{Ams codes:} 34-02, 34C05
+\end{abstract}
+\vspace{30pt} % Vertical whitespace between the abstract and first section
+
+%----------------------------------------------------------------------------------------
+%	ESSAY BODY
+%----------------------------------------------------------------------------------------
+
+\section*{Introduction}
+
+%\subsection*{Definition 1}
+\textbf{Definition 1.} \cite{1} \cite{2}. Let the system be
+\begin{equation}
+	\dot{\mathrm{X}}=\mathrm{V}(\mathrm{X}) \quad\left(\mathrm{X} \in \mathrm{R}^{n}\right),
+\end{equation}
+where the square vector field $ \mathrm{V}(\mathrm{X}) \in \mathrm{R}^{n} $ is well defined  and continuously differentiable in an open neighborhood $ W \in \mathrm{R}^{n} $ of the origin.
+Besides, the origin is an isolated singularity. 
+%----------------------
+
+\vskip 8pt
+\textbf{Definition 2.} \cite{3}
+Let the linear operator $ A: \mathrm{R}^{n} \rightarrow \mathrm{R}^{\mathrm{n}}$ be 
+
+$$ A=\left(\frac{\partial \mathrm{V}(\mathrm{X})}{\partial \mathrm{X}}\right).$$
+
+\noindent
+Since the system has hyperbolic nonlinearity, the real part of all eigenvalues $ \lambda_{\mathrm{i}}  $ corresponding to $  A  $ is nonzero.
+In a sufficiently small neighborhood of the origin, Eq. (1) can be written as  
+$$\dot{\mathrm{X}}=A \mathrm{X}+\mathrm{O}(|\mathrm{X}|)$$
+\begin{equation}
+or \; \left\{\begin{array}{l}\dot{\mathrm{X}}_{1}=A_{-} \mathrm{X}_{1}+\mathrm{O}_{1}\left(\left|\mathrm{X}_{1}\right|+\left|\mathrm{X}_{2}\right|\right) \stackrel{def }{=} \mathrm{V}_{1} \\ \dot{\mathrm{X}}_{2}=A_{+} \mathrm{X}_{2}+\mathrm{O}_{2}\left(\left|\mathrm{X}_{1}\right|+\left|\mathrm{X}_{2}\right|\right) \stackrel{ def }{=} \mathrm{V}_{2}\end{array}\right., 
+\end{equation}
+
+\noindent
+We specify that $ \mathrm{V}_{1}, \mathrm{V}_{2} \in C^{\prime}, \mathrm{X} \in \mathrm{R}^{\mathrm{n}}, \mathrm{X}_{1} \in \mathrm{R}^{\mathrm{k}}, \mathrm{X}_{2} \in \mathrm{R}^{\mathrm{m}} \quad(k+m=n, k \geq 0, m \geq 0),$
+$|\mathrm{X}|^{2}=   \left|\mathrm{X}_{1}\right|^{2}+\left|\mathrm{X}_{2}\right|^{2}(| \cdot| $  is the Euclidean parameter  $ ) ,(A)=\left(\begin{array}{cc}A_{-} & 0 \\ 0 & A_{+}\end{array}\right) $.
+
+\noindent
+$A_{-}: \mathrm{R}^{k} \rightarrow \mathrm{R}^{\mathrm{k}}.  $ All eigenvalues are negative in real part, i.e.  $\mathrm{Re} \lambda_{i}<0(i=1 \cdots k) $,
+
+\noindent
+$A_{+}: \mathrm{R}^{m} \rightarrow \mathrm{R}^{\mathrm{m}}.  $ All eigenvalues are negative in real part, i.e.  $\mathrm{Re} \lambda_{i}>0(i=1 \cdots k) $.
+
+\noindent
+$\mathrm{O}_{1}\left( \cdot \right)$ and $\mathrm{O}_{2}\left( \cdot \right)$ are orders of magnitude which satisfy
+
+\begin{equation*}
+	\begin{aligned}
+		& \lim _{\left|\mathrm{X}_1\right|+\left|\mathrm{X}_2\right| \rightarrow 0} \frac{\mathrm{O}_1\left(\left|\mathrm{X}_1\right|+\left|\mathrm{X}_2\right|\right)}{\left|\mathrm{X}_1\right|+\left|\mathrm{X}_2\right|}=\mathrm{O}_1 \in \mathrm{R}^{\mathrm{k}} ,\\
+		& \lim _{\left|\mathrm{X}_1\right|+\left|\mathrm{X}_2\right| \rightarrow 0} \frac{\mathrm{O}_2\left(\left|\mathrm{X}_1\right|+\left|\mathrm{X}_2\right|\right)}{\left|\mathrm{X}_1\right|+\left|\mathrm{X}_2\right|}=\mathrm{O}_2 \in \mathrm{R}^{\mathrm{m}} .
+		\end{aligned}
+\end{equation*}
+
+%----------------------
+
+\vskip 8pt
+\textbf{Lemma 1.} First, we consider special systems.
+
+\begin{equation}
+	\left\{\begin{array}{l}
+		\dot{\mathrm{X}}_{1}=A_{-} \mathrm{X}_{1}+\mathrm{O}_{1}\left(\left|\mathrm{X}_{1}\right|\right) \stackrel{\text { def }}{=} \mathrm{V}_{1}^{\prime} \\
+		\dot{\mathrm{X}}_{2}=A_{+} \mathrm{X}_{2}+\mathrm{O}_{2}\left(\left|\mathrm{X}_{2}\right|\right) \stackrel{\text { def }}{=} \mathrm{V}_{2}^{\prime}
+	\end{array}\right.
+\end{equation}
+
+\noindent
+If the right-hand side of system (3) satisfies $\mathrm{V}_{1}^{\prime}, \mathrm{V}_{2}^{\prime} \in C^{\prime} $ in a sufficiently small neighborhood of the origin, noting that $r_{i}^{2}=\left(\mathrm{X}_{\mathrm{i}}\right. ,  \left.\mathrm{X}_{\mathrm{i}}\right)(i=1,2) $, 
+there must be $\sigma_{i}>0(i=1,2)$ and positive constants $ \alpha_{1}>\beta_{1}>0,\beta_{2}>\alpha_{2}>0  $ such that the directional derivative $ \mathrm{L}_{\mathrm{v}_{1}^{\prime}}^{r_{i}^{2}} $ of $ r_{i}^{2}$ along the vector field $ \mathrm{V}_{i}^{\prime}(i=1,2) $ 
+satisfy the following inequality.
+
+\begin{equation*}
+	\begin{aligned}
+		-&\alpha_{1} r_{1}^{2}<\mathrm{L}_{\mathrm{v}_{1}^{\prime}}^{r_{1}^{2}}<-\beta_{1} r_{1}^{2} & (for \left.\forall \left|\mathrm{X}_{1}\right|<\sigma_{1}\right)\\
+		&\alpha_{2} r_{2}^{2}<\mathrm{L}_{\mathrm{v}_{2}^{\prime}}^{r_{2}^{2}}<\beta_{2} r_{2}^{2} & (for \left.\forall \left|\mathrm{X}_{2}\right|<\sigma_{2}\right)
+	\end{aligned}
+\end{equation*}
+%------------------------------------------------
+\vskip 8pt
+\textbf{Lemma 2.} 
+Let $\left(\begin{array}{l}\varphi_1(t) \\ \varphi_2(t)\end{array}\right)$ be a nonzero solution of the system (3) with the initial value $\left|\varphi_i(0)\right|=\delta_i<\sigma_i(i=1,2)$ $\left(\delta_{\mathrm{i}}>0\right)$. 
+Construct $\rho_{\mathrm{i}}(t)=\ln \frac{\left(\varphi_{\mathrm{i}}(t), \varphi_{\mathrm{i}}(t)\right)}{\delta_i^2}$ of real variable $t$, then we can get a differential homogeneous embryo $\rho_{\mathrm{i}}(t)$ for every $i$.
+$$\rho_{\mathrm{i}}: \mathrm{R} \cap\left\{t_{:}\left|\varphi_{\mathrm{i}}(t)\right|<\sigma_{\mathrm{i}}\right\} \rightarrow \rho_{\mathrm{i}}\left(\mathrm{R} \cap\left\{t:\left|\varphi_{\mathrm{i}}(t)\right|<\sigma_{\mathrm{i}}\right\}(i=1,2)\right.$$
+Aditionally, the differentials of $\rho_{\mathrm{i}}(t)$ satisfy the following inequalities.
+\begin{equation*}
+	\begin{aligned}
+	-&\alpha_1<\frac{\mathrm{d} \rho_1(t)}{\mathrm{d} t}<-\beta_1 \quad\left(\alpha_1>\beta_1>0\right)\\
+    &\alpha_2<\frac{\mathrm{d} \rho_2(t)}{\mathrm{d} t}<\beta_2 \quad\;\,\;\left(\beta_2>\alpha_2>0\right)
+    \end{aligned}
+\end{equation*}
+%------------------------------------------------
+\vskip 8pt
+\textbf{Lemma 3.} 
+For every $\mathrm{X}=\left(\begin{array}{l}\mathrm{X}_1 \\ \mathrm{X}_2\end{array}\right) \neq 0$, $\mathrm{X}_1 \in \mathrm{R}^k, \mathrm{X}_2 \in \mathrm{R}^m , (k+m=n, k \geq 0, m \geq 0)$ $\left|\mathrm{X}_{\mathrm{i}}\right|<\sigma_{\mathrm{i}}\left(\sigma_{\mathrm{i}}>0\right)(i=1,2)$, there is a unique form
+$$
+\mathrm{X}=\left(\begin{array}{l}
+f_1^t \mathrm{x}_{10} \\
+f_2^t \mathrm{x}_{10}
+\end{array}\right),
+$$
+where $\mathrm{X}_{10} \in \mathrm{R}^k, \mathrm{X}_{20} \in \mathrm{R}^m $. $\left(\begin{array}{l}f_1^t \\ f_2^{t}\end{array}\right)$ denotes the phase flow of system (3).
+
+\vskip 8pt
+\textit{The three lemmas above were well proved in Ref. 3 and here we consider them correct.}
+%---------------------------------------------------------------------------------------
+%  Proof of Hartman Theorem
+%---------------------------------------------------------------------------------------
+\section*{Proof of Hartman Theorem}
+
+\textbf{Step 1. } 
+The system (3) is locally topologically equivalent to 
+\begin{equation}
+	\left\{\begin{array}{l}\dot{\mathrm{Y}}_1=-\mathrm{Y}_1 \\ \dot{\mathrm{Y}}_2=\mathrm{Y}_2 \;,\end{array}\right. 
+\end{equation}
+$$
+where \;\mathrm{Y}_1 \in \mathrm{R}^{\mathrm{k}}, \mathrm{Y}_2 \in \mathrm{R}^{\mathrm{m}}, (k+m=n, k \geq 0, m \geq 0).$$
+
+\vskip 8pt
+\textbf{Proof 1. }
+Let $\left(\begin{array}{l}f_1^t \\ f_2^{t}\end{array}\right)$ be the phase flow of system ( 3 ) and $\left(\begin{array}{l}g_1^t \\ g_2^{t}\end{array}\right)$  be the phase flow of system (4). Define the sets $S_1$ and $S_2$ as follows.
+$$S_1=\left\{\mathrm{X}_{10} \mid \mathrm{X}_{10} \in\right.
+\left.\mathrm{R}^{\mathrm{k}},\left(\mathrm{X}_{10}, \mathrm{X}_{10}\right)=\delta_1^2<\sigma_1^2\right\} , S_2=\left\{\mathrm{X}_{20} \mid \mathrm{X}_{20} \in \mathrm{R}^{\mathrm{m}},\left(\mathrm{X}_{20}, \mathrm{X}_{20}\right)=\delta_2^2<\sigma_2\right\} $$
+
+\noindent
+Our work is to prove that system (3) is locally topologically equivalent to system (4), which can be divided into three parts.
+
+\begin{enumerate}
+	\item The map $h_1: \mathrm{R}^{\mathrm{k}} \cap\left\{\mathrm{X}_1: \mathrm{X}_1<\sigma_1\right\} \rightarrow \mathrm{R}^{\mathrm{k}} \cap\left\{\mathrm{X}_1:\left|\mathrm{X}_1\right|<\sigma_1\right\}$ is a homomorphism.
+	\item The map $	h_2: \mathrm{R}^{\mathrm{m}} \cap\left\{\mathrm{X}_2: \mathrm{X}_2<\sigma_1\right\} \rightarrow \mathrm{R}^{\mathrm{m}} \cap\left\{\mathrm{X}_2:\left|\mathrm{X}_2\right|<\sigma_2\right\}$ is a homomorphism.
+	\item The direct product maintains topological equivalence.
+\end{enumerate}
+
+\noindent
+The first two parts can be proved by constructing a mapping, and the third part follows from the first two. (See Ref. 3 for details.)
+%-----------------------------------
+
+\vskip 8pt
+\textbf{Step 2. }System (2) is locally topologically equivalent to system (3).
+
+\vskip 8pt
+\textbf{Proof 2. }
+Transform system (2)
+$$
+\left\{\begin{array}{l}
+\mathrm{X}_1=\mathrm{Y}_1-\varphi\left(\mathrm{Y}_2\right) \\
+\mathrm{X}_2=\mathrm{Y}_2-\psi\left(\mathrm{Y}_1\right)
+\end{array}\right.
+$$
+and we can get
+\begin{equation}
+	\left\{\begin{array}{l}
+	\dot{\mathrm{Y}}_1=A_{-} \mathrm{Y}_1+\mathrm{O}(\Delta)\left(\left|\mathrm{Y}_1\right|+\left|{\psi}\left(\mathrm{Y}_1\right)\right|\right) \\
+	\dot{\mathrm{Y}}_2=A_{+} \mathrm{Y}_2+\mathrm{O}_2(\Delta)\left(\left|\mathrm{Y}_2\right|+\left|{\varphi}\left(\mathrm{Y}_2\right)\right|\right) \\
+	\dot{{\psi}}\left(\mathrm{Y}_1\right)=A_{+} {\varphi}\left(\mathrm{Y}_1\right)-\mathrm{O}_2(\Delta)\left(\left|\mathrm{Y}_1\right|+\left|{\psi}\left(\mathrm{Y}_1\right)\right|\right) \\
+	\dot{{\varphi}}\left(\mathrm{Y}_2\right)=A_{-} {\varphi}\left(\mathrm{Y}_2\right)-\mathrm{O}_1(\Delta)\left(\left|\mathrm{Y}_2\right|+\left|\varphi\left(\mathrm{Y}_2\right)\right|\right),
+	\end{array}\right.
+\end{equation}
+$$
+where\; \Delta=\frac{\left|\mathrm{Y}_1-{\varphi}\left(\mathrm{Y}_2\right)\right|+\left|\mathrm{Y}_2-\psi\left(\mathrm{Y}_1\right)\right|}{\left|\mathrm{Y}_1\right|+\left|\mathrm{Y}_2\right|+\left|\varphi\left(\mathrm{Y}_2\right)\right|+\left|\psi\left(\mathrm{Y}_1\right)\right|} \;is\; a\; bounded\; quantity.
+$$
+By the existence uniqueness theorem of solutions and the continuous dependence theorem on initial values, it follows that the solution $\mathrm{Y}_1(t), \mathrm{Y}_2(t), {\varphi}\left(\mathrm{Y}_2\right), {\psi}\left(\mathrm{Y}_1\right)$ of system (5) satisfying $\left.\mathrm{Y}_1=\mathrm{O}_1,  \mathrm{Y}_2=\mathrm{O}_2,  \varphi{( O _ { 2 }}\right)=\mathrm{O}_2,  \psi\left(\mathrm{O}_1\right)=\mathrm{O}_1$ exists uniquely and is continuously differentiable.
+In a sufficiently small neighborhood of $(O_1,O_2)$, the Jacobian determinant of the transformation made to system (2) $ J=\left(\frac{\partial \mathrm{X}_{\mathrm{i}}}{\partial \mathrm{Y}_{\mathrm{i}}}\right)\neq 0\; (i=1,2). $
+Then by the inverse function existence theorem, the transformation is a differential homomorphism in a sufficiently small neighborhood of $(O_1,O_2)$.
+
+\noindent
+By the differentiability of $\varphi\left(\mathrm{Y}_2\right), \psi\left(\mathrm{Y}_1\right)$, in a sufficiently small neighborhood of $\left(O_1, O_2\right)$
+\begin{equation*}
+	\begin{aligned}
+		\varphi\left(\mathrm{Y}_2\right)=\int_0^1 \frac{\mathrm{d} \varphi\left(s \mathrm{Y}_2\right)}{\mathrm{d} s} \mathrm{~d} s=\int_0^1 \varphi^{\prime}\left(s \mathrm{Y}_2\right) \mathrm{d} s \cdot \mathrm{Y}_2\\
+        \psi\left(\mathrm{Y}_1\right)=\int_1^0 \frac{\mathrm{d} \psi\left(s \mathrm{Y}_1\right)}{\mathrm{d} s} \mathrm{~d} s=\int_0^1 \psi^{\prime}\left(s \mathrm{Y}_1\right) \mathrm{d} s \cdot \mathrm{Y}_1 ,
+	\end{aligned}
+\end{equation*}
+$$where \int_0^1{\varphi}^{\prime}\left(s \mathrm{Y}_2\right) \mathrm{d} s, \; \int_0^1 \psi^{\prime}\left(s \mathrm{Y}_1\right) \mathrm{d} s \in C^{\prime}.$$
+Substitute the two equations into the first two equations of the system (5) and we can get 
+\begin{equation}
+	\left\{\begin{array}{l}
+		\dot{\mathrm{Y}}_1=A_{-} \mathrm{Y}_1+\mathrm{O}_1(\Delta)\left(1+\left|\int_0^1 {\psi}\left(s \mathrm{Y}_1\right) \mathrm{d} s\right|\right)\left|\mathrm{Y}_1\right|\\
+        \dot{\mathrm{Y}}_2=A_{+} \mathrm{Y}_2+\mathrm{O}_2(\Delta)\left(1+\left|\int_0^1 {\varphi}\left(s \mathrm{Y}_2\right) \mathrm{d} s\right|\right)\left|\mathrm{Y}_2\right|,
+	\end{array}\right.
+\end{equation}
+\noindent
+where $\mathrm{O}_1(\Delta)\left(1+\mid \int_0^1 \psi^{\prime}\left(s \mathrm{Y}_1\right) \mathrm{d} s\mid\right), \mathrm{O}_2(\Delta)\left(1+\mid \int_0^1 {\varphi}^{\prime}\left(s \mathrm{Y}_2\right) \mathrm{d} s\mid\right)$ are both bounded and infinitesimal.
+Therefore, system (2) and system (6) are locally topologically equivalent. Since system (6) is of the same form as system (3), system (2) and system (3) are also locally topologically equivalent.
+%-----------------------------------
+\vskip 8pt
+\textbf{Step 3. }(\textit{Hartman theorem}) In a sufficiently small neighborhood of the origin, system (1) is locally equivalent to system (7).
+\begin{equation}
+	\left\{\begin{array}{l}\dot{\mathrm{X}}_1=A_{-} \mathrm{X}_1 \\ \dot{\mathrm{X}}_2=A_{+} \mathrm{X}_2\end{array}\right.
+\end{equation}
+
+\vskip 8pt
+\textbf{Proof 3. }
+Since $\mathrm{V}(\mathrm{X})\in C^{\prime}$, system (1) can be written in the form of system (2) in a sufficiently small neighborhood of the origin. From step 2, system (2) is locally topologically equivalent to system (3), while from step 1, system (3) is locally topologically equivalent to system (4). Since system (7) is a special case of system (3) $( \mathrm{O}_1\left|\mathrm{X}_1\right|=\mathrm{O}_1, \mathrm{O}_2\left|\mathrm{X}_2\right|=\mathrm{O}_2)$,  according to the above Lemmas 1-3 and the argument of Step 1, it follows that the local topology of system (4) is equivalent to system (7), and then the local topology of system (1) is equivalent to system (7).
+Above all, Hartman theorem is proved.
+
+\vskip 8pt
+\textit{Thank you to my Ordinary Differential Equations teacher, Dongmei Xiao, for teaching me and the authors of \cite{3} \cite{4} \cite{5} for their wonderful ideas.}
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+%\bibliographystyle{unsrt}
+
+\bibliography{sample.bib}
+
+%----------------------------------------------------------------------------------------
+\end{document}

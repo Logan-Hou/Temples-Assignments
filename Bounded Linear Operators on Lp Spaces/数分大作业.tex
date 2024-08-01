@@ -1,0 +1,150 @@
+%---------------------导言区---------------------------%
+\documentclass[12pt,a4paper,UTF8]{ctexart}
+	%10pt：正文字体为12pt，缺省为10pt；各层级字体大小会根据正文字体自动调整
+	%a4paper：纸张大小a4；
+	%UTF8：中文要求
+\usepackage{geometry}%用于设置上下左右页边距
+	\geometry{left=2.5cm,right=2.5cm,top=3.5cm,bottom=2.8cm}
+\usepackage{xeCJK,amsmath,paralist,enumerate,booktabs,multirow,graphicx,float,subfig,setspace,listings,lastpage,hyperref}
+	%xeCJK：中文字体（如楷体，作者和机构需要用到）的设置
+	%amsmath：数学公式
+	%paralist，enumerate：自定义项目符号
+	%booktabs：三线图，论文常用的表格风格
+	%multirow：复杂表格
+	%graphicx，float: 插入图片
+	%subfig：并排排版图片以及强制图表显示在“这里”[H]
+	%setspace：设置行间距等功能
+	\setlength{\parindent}{2em}%正文首行缩进两个汉字
+	%listings:用于排版各种代码；比如matlab的代码
+	\lstset{language=Matlab}%matlab代码
+	%lastpage:获取总页数;
+	%hyperref:超链接,和lastpage搭配.
+\usepackage{fancyhdr}
+	%fancyhdr：一个很强大的宏包，用于自定义设计页面风格并命名以供调用。
+	\pagestyle{fancy}
+	\rhead{Dec.2022}
+	\lhead{数学分析课程作业}
+	\cfoot{Page \thepage/\pageref{LastPage}}  %当前页\总页数
+	
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%正文开始%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+%%-------------------标题与信息-----------------------%%
+
+\begin{center}
+  \LARGE\text{从代数角度浅析$L^p$空间上的有界线性算子}\par
+  \centering{\normalsize{\text{侯力广  521070910043  数学科学学院}}}\par
+\end{center}
+%%---------------------摘要---------------------------%%
+\begin{spacing}{0.7}
+	~
+\end{spacing}
+%\noindent\rule[0.1\baselineskip]{\textwidth}{0.5pt}
+\noindent \textbf{摘~要：} 针对线性赋范空间$L^p$内的有界线性算子，从代数角度引入算子零空间与像空间的概念，并证明了一定条件下二者均构成$L^p$的子空间。其次证明了$L^p$与其子空间形成的商空间之间的同构与同胚关系。
+
+\noindent \textbf{关键词：} $L^p$空间；  子空间； 有界线性算子；同构； 同胚；
+%\rule[0.3\baselineskip]{\textwidth}{0.5pt}
+\begin{spacing}{1.3}
+	~
+\end{spacing} 
+%%----------------------正文--------------------------%%
+
+首先我们引入有界线性算子的子空间、零空间、像空间的定义
+
+\textbf{定义 1} 设  $A $ 是一个 $ L^{p} $ 空间,  $B \subset A$ . 若 $B $依 $A $ 中的运算与范数构成一个  $L^{p}$  空间, 则称 $ A$  的子集$  B$  为 $A$  的 $ L^{p}$  子空间.
+
+\textbf{定义 2 }设 $ \varphi: A \rightarrow B$  是从 $ L^{p} $ 空间  $A$  到  $L^{p}$  空间 $ B $ 内的有界线性算子, 则分别称集合
+$\{x \mid x \in A, \varphi(x)=0\}$与 $ \{y \mid y \in B, \exists x \in A  ,st \, \varphi(x)=y\} $
+为 $ \varphi $ 的零空间与像空间, 且分别记为$  \operatorname{Ker} \varphi $ 与  $\operatorname{Im} \varphi$ .
+
+
+~\par
+
+继而考虑$  \operatorname{Ker} \varphi $ ，  $\operatorname{Im} \varphi$ 和$L^p$空间$A,B$的关系
+
+\textbf{引理 1} 设  $A, B $ 都是 $ L^{p} $ 空间,  $\varphi: A \rightarrow B $ 是有界线性算子, 则  $\operatorname{Ker} \varphi $ 是 $ A$  的一个 $ L^{p} $ 子空间. 
+
+\textbf{证 } 易知  $\operatorname{Ker} \varphi$  是 $ A $ 的线性子空间.
+若 $ \left\{x_{n}\right\} $ 是 $ \operatorname{Ker} \varphi $ 中一个收敛于  $x \in A $ 的序列, $ x_{n} \rightarrow x(n \rightarrow \infty) $, 则由 $ \varphi $ 的有界性 (可导出连 续性) 及范数的连续性, 可推知  $x \in \operatorname{Ker} \varphi $, 因此 $ \operatorname{Ker} \varphi  $是闭的. 所以 $ \operatorname{Ker} \varphi $ 是  $A$  的  $L^{p}$  子空间.
+
+\textbf{引理 2 }设 $ A, B $ 都是 $ L^{p} $ 空间, 且 $ A $ 是列紧的, $ \varphi: A \rightarrow B $ 是有界线性算子, 则  $\operatorname{Im} \varphi $ 是 $ B$  的 一个 $ L^{p} $ 子空间.
+
+\textbf{证 }  易知 $ \operatorname{Im} \varphi $ 是 $ B $ 的线性子空间.
+若 $ \left\{y_{n}\right\} $ 是 $ \operatorname{Im} \varphi $ 中任一收敛于 $ y \in B $ 的序列, $ y_{n} \rightarrow y(n \rightarrow \infty) $, 则由 $ \varphi $ 的有界性及 $ A $ 的列紧 性, 可推知 $ y \in \operatorname{Im} \varphi$ . 因而  $\operatorname{Im} \varphi$  是闭的. 所以 $ \operatorname{Im} \varphi $ 是 $ B $ 的 $ L^{p} $ 子空间.
+
+设  A  是一个 $ L^{p} $ 空间,  $S$  是 $ A $ 的子空间. 因 $ S$  是 $ A $ 的闭线性子空间, 当 $ \|x\|=0, x=0 \in   S $，定义商空间  $A / S=\{[x]=x+S \mid x \in A\} $ ，可证其依下列加法, 数乘及范数构成一个 $ L^{p} $ 空间:
+$$
+\begin{array}{c}
+{[x]+[y]=[x+y]} \\
+\alpha[x]=[\alpha x] \\
+\|[x]\|=\inf _{x \in[x]}\|x\|
+\end{array}
+$$
+式中 $ \alpha \in F$,$ F$  为数域. 故良定，此$ L^{p}  $空间称为 $ A $ 关于 $ S $ 的商空间。有映射  $\varphi: A \rightarrow A / S $, 使得 $ \varphi(x)=[x], x \in A$ , 且是一个自然有界线性算子.
+
+\textbf{引理 3 }设  $A, B$  都是  $ L^{p}  $ 空间,  $ \varphi: A \rightarrow B  $ 是有界线性算子, 则映射 $  \psi: A / \operatorname{Ker} \varphi \rightarrow B  $ 使 $  \psi([x])   =\varphi(x), x \in A $ ,也是一个有界线性算子.
+
+\textbf{证 } 易知 $  \psi $  是一个线性算子. 下面证明  $ \psi $  的有界性: 设  $ A / \operatorname{Ker} \varphi  $ 中序列  $ \left\{\left[x_{n}\right]\right\} $  收敛于 $  [x] $ , $  \left[x_{n}\right] \rightarrow[x](n \rightarrow \infty)$  . $ \forall \varepsilon>0, \exists $  自然数 $  N $ , 当  $ n>N$  , 有
+$ \left\|\left[x_{n}\right]-[x]\right\|<\varepsilon$ 
+因而  $ \exists x_{n} \in\left[x_{n}\right], x \in[x] $ ,使
+$ \left\|x_{n}-x\right\|<\varepsilon$ 
+于是当 $ n>N $, 有
+$$
+\left\|\psi\left(\left[x_{n}\right]\right)-\psi([x])\right\|=\left\|\varphi\left(x_{n}\right)-\varphi\left(x\right)\right\| \leq \|\varphi\| \cdot\left\|x_{n}-x\right\|<\|\varphi\| \cdot \varepsilon 
+$$
+所以$\psi\left(\left[x_{n}\right]\right) \rightarrow \psi([x]) \quad(n \rightarrow \infty) $
+，即 $ \psi$ 是连续的，因而  $\psi $ 也是有界的.
+
+~\par
+
+再考虑$A,B$与其子空间形成的商空间之间的关系
+
+\textbf{定理 1} 设  $A,B$  都是$L^p$空间， $ \varphi: A \rightarrow B $ 是有界线性算子, 则 $ B $ 的 $ L^{p}  $子空间$  S^{\prime}  $的完全原像$  S=\varphi^{-1}\left(S^{\prime}\right) $ 是 $ A $ 的  $L^{p} $ 子空间, 并且 $ L^{P} $ 商空间  $A / S $ 与 $ B / S^{\prime}$  同构.
+
+\textbf{证 } 易知 $ S $ 是 $ A $ 的线性子空间, 又设在 $ S$  中序列  $\left\{x_{n}\right\} $ 收敛于 $ x \in A, x_{n} \rightarrow x(n \rightarrow \infty)$ , 则有 $ \varphi\left(x_{n}\right) \rightarrow \varphi(x)(n \rightarrow \infty) $. 因 $ S^{\prime}  $是 $ B $ 的闭线性子空间, 故 $ \varphi(x) \in S^{\prime}, x \in S$ , 从而  $S$  是闭的, 因此 $ S $ 是 $ A $ 的 $ L^{p}$  子空间.
+
+令 $ \psi: A / S \rightarrow B / S^{\prime} $, 使  $\forall[x] \in A / S, \psi([x])=[\varphi(x)] $, 其中  $x \in[x] $ (在映射 $ \psi $ 的作用下, $ [x]$  的像不因代表元的选择改变而改变), 且 $ \psi $ 是从 $ A / S $ 到 $ B / S^{\prime} $ 上的单射 (即双射),  $\psi $ 是一个 线性算子, $ \forall\left[x_{1}\right],\left[x_{2}\right] \in A / S, \alpha \in F $, 有
+$$
+\begin{array}{c}
+\psi\left(\left[x_{1}\right]+\left[x_{2}\right]\right)=\psi\left(\left[x_{1}+x_{2}\right]\right)=\left[\varphi\left(x_{1}+x_{2}\right)\right] \\
+=\left[\varphi\left(x_{1}\right)\right]+\left[\varphi\left(x_{2}\right)\right]=\psi\left(\left[x_{1}\right]\right)+\psi\left(\left[x_{2}\right]\right) \\
+\psi\left(\alpha\left[x_{1}\right]\right)=\psi\left(\left[\alpha x_{1}\right]\right)=\left[\varphi\left(\alpha x_{1}\right)\right]=\alpha\left[\varphi\left(x_{1}\right)\right]=\alpha \psi\left(\left[x_{1}\right]\right)
+\end{array}
+$$
+所以  $A / S $ 与  $B / S^{\prime} $ 同构.
+
+
+\textbf{定理 2} 若与定理 1 同设, 则 $ A / S $ 与  $B / S^{\prime}$  也同胚.
+
+\textbf{证 } 令  $\tilde{\varphi}: B \rightarrow B / S^{\prime} $ 为自然有界线性算子, 则合成映射 $ \tilde{\varphi} \circ \varphi: A \rightarrow B / S^{\prime} $ 为一个有界线性算 子, 且  $\operatorname{Ker}(\tilde{\varphi} \circ \varphi)=S $. 由引理 3 可知  $\tilde{\varphi }\circ \varphi  $导出的映射  $\varphi: A / S \rightarrow B / S^{\prime} $ 为一个有界线性算子, 因而也为一个连续线性算子.
+
+因  $\psi $ 是$  L^p $空间 $ A / S $ 到 $ L^p $ 空间  $B / S^{\prime} $ 上的有界线性算子, 且  $\psi$  是一一对应的, 于是由 Banach逆算子定理知 $ \psi^{-1} $ 也是有界线性算子, 因而逆算子 $ \psi^{-1} $ 是连续线性算子. 由于 $ \psi$  与 $ \psi^{-1} $ 都 是连续的, 又 $ \psi $ 是从  $A / S $ 到  $B / S^{\prime}$  的双射, 所以 $ L^{p}$  商空间 $ A / S $ 与 $ B / S^{\prime} $ 同胚.
+
+
+% -----------参考文献 ----------------------------------%%
+\newpage %换页
+\phantomsection
+\addcontentsline{toc}{section}{参考文献} % 添加  "参考文献 " 到目录
+
+\begin{thebibliography}{99}
+
+
+\bibitem{1}
+关肇直,张 恭 庆,冯德 兴.  线性泛函分析入门[M].  上海科学技术出版社.1979
+\bibitem{2}
+夏道行,吴卓人,严 绍 宗,舒五 昌.  实变 函 数与泛函 分 析 [M].人 民教育 出版社 .1979
+\bibitem{3}
+李 恒 沛.  关于域$F$上的向量空间$V$的一个性质的证明.  北京航空航天大学学报[D].   1994. 20(3). 322-323
+\bibitem{4}
+李恒 沛.  $L^p$空间上的有界线性算子的某些性质.  北京航空航天大学学报[D].  1995. 21(3). 87-89  
+
+
+\end{thebibliography}
+
+
+
+
+\end{document}

@@ -1,0 +1,421 @@
+% !TEX program = xelatex
+\documentclass[a4paper,12pt]{article}
+
+%-----中文宏包-----
+\usepackage[UTF8]{ctex}
+
+%-----数学宏包-----
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs,bm}
+%-----draft下 label提示-----
+%\usepackage[notcite,notref]{showkeys}
+%-----页面布局-----
+\usepackage{geometry}
+%\geometry{left=1.25in,right=1.25in,top=1in,bottom=1in}
+\geometry{left=1in,right=1in,top=1in,bottom=1in}
+%\geometry{left=2.5cm,right=2.1cm,top=1.7cm,bottom=2cm,includehead,includefoot}
+
+%-----设置超链接-----
+\usepackage{url,hyperref}
+\hypersetup{colorlinks=true,linkcolor=black,citecolor=black} % 去掉目录红框
+%-----制作目录-----
+\usepackage{imakeidx}
+% 设置颜色
+\usepackage{color,xcolor}
+% 插入图片
+\usepackage{graphicx}
+\usepackage{epsfig}
+%-----设置表格-----
+\usepackage{tabularx,array}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{fancybox}
+%-----调整单元格格式-----
+\usepackage{makecell}
+%-----操作字符串-----
+\usepackage{xstring}
+%-----多语种处理-----
+%\usepackage[english]{babel}
+%-----设置代码环境-----
+\usepackage{listings}
+%-----设置章节标题和目录-----
+\usepackage{titletoc}
+\usepackage{titlesec}
+%-----数学公式扩展-----
+\usepackage{mathtools}
+%-----浮动体设置-----
+\usepackage{float}
+%-----书签设置-----
+\usepackage{bookmark}
+%-----参考文献格式-----
+\usepackage[numbers]{natbib}
+%-----设置页眉页脚格式-----
+\usepackage{fancyhdr}
+%-----设置行间距 -----
+\renewcommand*{\baselinestretch}{1.5}
+
+%\setmainfont{Times New Roman}
+%\setmonofont{Courier New}
+%\setsansfont{Arial}
+%\setCJKfamilyfont{kai}[AutoFakeBold]{simkai.ttf}
+%\newcommand*{\kai}{\CJKfamily{kai}}
+%\setCJKfamilyfont{song}[AutoFakeBold]{SimSun}
+%\newcommand*{\song}{\CJKfamily{song}}
+
+\newcommand{\upcite}[1]{\textsuperscript{\textsuperscript{\cite{#1}}}}
+
+\renewcommand{\thesection}{\chinese{section}、}
+\renewcommand{\thesubsection}{（\chinese{subsection}）}
+\renewcommand{\thesubsubsection}{\arabic{subsubsection}.}
+\titleformat{\section}{\bfseries \zihao{-3}}{\chinese{section}、}{0em}{}
+\titleformat{\subsection}{\bfseries \zihao{4}}{（\chinese{subsection}）}{0.2em}{}
+\titleformat{\subsubsection}{\bfseries \zihao{-4}}{\arabic{subsubsection}、}{0.2em}{}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\stunum}[1]{\def\defstunum{#1}}
+\newcommand{\class}[1]{\def\defclass{#1}}
+
+\makeatletter
+\renewcommand\maketitle{
+{\raggedright
+\vspace*{12pt}
+\begin{center}
+{\fontsize{20pt}{20pt}\selectfont \bfseries \@title }\\[1.5em]
+  姓名: \@author \quad 学号: \defstunum \\
+%{\fontsize{20pt}{20pt}\selectfont \bfseries \@title }\\[16pt]
+%  \defclass \quad \@author \quad \defstunum \\[10pt]
+\end{center}}
+}
+\makeatother
+
+% ----- 设置浮动体间距 ------
+\setlength{\textfloatsep}{0pt}
+\setlength{\floatsep}{10pt plus 3pt minus 2pt}
+\setlength{\intextsep}{10pt}
+\setlength{\abovecaptionskip}{2pt plus1pt minus1pt}
+\setlength{\belowcaptionskip}{3pt plus1pt minus2pt}
+%\setlength{\itemsep}{3pt plus1pt minus2pt}
+
+% ----- 设置公式间距为零 ------
+\AtBeginDocument{
+	\setlength{\abovedisplayskip}{4pt plus1pt minus1pt}
+	\setlength{\belowdisplayskip}{4pt plus1pt minus1pt}
+	\setlength{\abovedisplayshortskip}{2pt}
+	\setlength{\belowdisplayshortskip}{2pt}
+	\setlength{\arraycolsep}{2pt}   % array中列之间空白长度
+}
+
+
+% --- 算法宏包及设置 ---
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\floatname{algorithm}{算法}
+\algrenewcommand\algorithmicrequire{\textbf{输入:}}
+\algrenewcommand\algorithmicensure{\textbf{输出:}}
+
+
+% ---- 定义列表项的样式 -----
+\usepackage{enumitem}
+\setlist{nolistsep}
+% \setlength{\itemsep}{3pt plus1pt minus2pt}
+
+% --- 证明结束黑框 ----
+% \renewcommand{\qedsymbol}{$\blacksquare$}
+
+% --- 设置英文字体 -----
+\usepackage{newtxtext}  % for text fonts
+
+% --- 设置数学字体 -----
+% \usepackage{newtxmath}
+% \usepackage{mathptmx}
+
+% --- 直接插入 pdf 文件 ----
+% \usepackage{pdfpages}
+
+% --- 自定义命令 -----
+\newcommand{\CC}{\ensuremath{\mathbb{C}}}
+\newcommand{\RR}{\ensuremath{\mathbb{R}}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\ii}{\bm{\mathrm{i}}\,}  % 虚部
+\newcommand{\md}{\mathrm{d}\,}
+\newcommand{\bA}{\boldsymbol{A}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+
+\graphicspath{{./figures/}}
+
+
+%%%%%%%%%%%%%% 题目等信息   %%%%%%%%%%%%%%%%%%
+
+\title{浅谈RSA算法原理及其破解与防御}
+\author{侯力广}
+\stunum{521070910043}
+
+\begin{document}
+
+
+\maketitle
+
+%----- 摘要 -----
+\noindent\rule[0.1\baselineskip]{\textwidth}{0.5pt}
+%\centerline{\large \textbf{摘 \ 要}}\\[5pt]
+\textbf{摘~要：} 作为非对称加密算法的代表，RSA算法凭借其强大的安全性，成为了目前公认的最为完善的公钥加密算法之一。本文详细介绍了RSA算法实现的数学原理及实现步骤，并从实际应用的角度讨论了因子分解攻击、小指数攻击、共模攻击三种破解RSA的方法，进而针对性提出了相应的防御措施。
+\vskip 3pt
+\noindent \textbf{关键词：} RSA算法；  原理； 破解；防御； \\
+\rule[0.3\baselineskip]{\textwidth}{0.5pt}
+\vskip 10pt
+
+
+%%%%%%%%%%%%%%%%%%%% 目录 %%%%%%%%%%%%%%%%%%%
+
+%\tableofcontents
+
+
+%%%%%%%%%%%%%%%%%%% 正文  %%%%%%%%%%%%%%%%%%
+
+
+\section{引言}
+
+数据加密技术，根据加密和解密使用的密钥是否相同，可以分为对称加密和非对称加密。传统的对称加密算法，加密和解密使用同一个密钥，密钥一旦泄露密文便会公开，通信的安全性难以保障。而非对称加密算法使用一对密钥进行加密与解密，私钥由用户保存，公钥可以自由分发，公钥加密的信息只能由私钥解密，大大提高了通信的安全性。RSA算法作为非对称加密算法的代表，由美国三位科学家 Rivest、Shamir 和 Adleman 于 1976 年提出，该算法基于数论中大数的分解机制，利用大数分解的困难性进行加密，进一步实现了数据加密和数字签名的功能。时至今日人们仍然无法有效地破解RSA加密算法，但随着计算机性能的提升，依据其加密原理，在一些特殊情况下，仍然存在理论或实际上破解的可能。\upcite{python破解}
+
+
+\section{RSA算法}
+
+\subsection{RSA的数学基础及证明}
+
+\textbf{1.欧拉函数}\par
+对于正整数n，$\phi(n)$表示小于等于n的正整数中与n互质的数的个数\par
+\quad  \par 
+
+
+
+\textbf{2.完全剩余系}\par
+若m是一个给定的正整数， 则全部整数可分成m个集合，记作$K_0,K_1,\cdots,K_{m-1}$,其中$K_r(r=0,1,\cdots,m-1)$是由一切形如$qm+r(q=0,\pm1,\pm2,\cdots)$的整数所组成的,$K_0,K_1,\cdots,K_{m-1}$叫做模m的剩余类\par 
+若$a_0,a_1,\cdots,a_{m-1}$是m个整数，并且其中任何两数都不同再一个剩余类里，则$a_0,\cdots,a_{m-1}$叫做模$m$的一个完全剩余系\par 
+\quad  \par 
+
+
+
+\textbf{3.简化剩余系}\par
+如果一个模m的剩余类里面的数与m互质，则称之为一个与模m互质的剩余类。在与模m互质的全部剩余类中，从每一类各任取一数所作成的数的集合，叫做模m的一个简化剩余系\par
+\quad  \par 
+
+
+
+\textbf{4.欧拉函数的积性}\par
+
+\textbf{引理1}\quad 若整数$a,b$与正整数$m$满足$a \equiv b(\bmod m), d \mid m, d>0 $,则$a \equiv b(\bmod d) $\par
+\textbf{证明1}\quad 整数$  a, b  $对模 $ m  $同余的充分与必要条件是$a=b+m t$,而$a=b+mt=b+kdt=b+d(kt)$，故$a \equiv b(\bmod d) $\par
+%引理1——性质壬
+
+\textbf{引理2}\quad 若 $ a \equiv b(\bmod m) $, $且  a=a_{1} d, b=b_{1} d,(d, m)=1 $, 则 $ a_{1} \equiv b_{1}(\bmod m) $\par
+\textbf{证明2}\quad $ a \equiv b(\bmod m) $，则$ m \mid a-b$ , 但  $a-b=d\left(a_{1}-b_{1}\right),(d, m)=1 $, 故 $ m \mid a_{1}-b_{1}$ , 即  $a_{1} \equiv b_{1}(\bmod m)$\par
+%引理2——性质己
+
+\textbf{引理3}\quad 若$a\equiv b(mod\;m)$，则$(a,m)=(b,m)$，因而若$d$能整除$m$及$a,b$两数之一，则$d$必能整除$a,b$中的另一个\par 
+\textbf{证明3}\quad $a\equiv b(mod\;m)$，则$a=b+m t$，故$a,m和b,m$具有相同的公因数，因而$(a,m)=(b,m)$\par 
+%引理3——性质癸
+
+\textbf{引理4}\quad 若$m_1,m_2$是互质的两个正整数，而$x_1,x_2$分别通过模$m_1,m_2$的完全剩余系，则$m_2x_1+m_1x_2$通过模$m_1m_2$的完全剩余系\par
+\textbf{证明4}\quad $x_1,x_2$分别通过$m_1.m_2$个整数，因此$m_2x_1+m_1x_2$通过$m_1m_2$个整数，由完全剩余系的定义可知，只需证明这$m_1m_2$个整数对模$m_1m_2$两两不同余\par 
+假定$m_{2} x_{1}^{\prime}+m_{1} x_{2}^{\prime} \equiv m_{2} x_{1}^{\prime \prime}+m_{1} x_{2}^{\prime \prime}\left(\bmod m_{1} m_{2}\right)$,其中$x_{1}^{\prime}, x_{1}^{\prime \prime}$是$x_{1}$所通过的完全剩余系中的整数,$x_{2}^{\prime}, x_{2}^{\prime \prime}$是$x_2$所通过的完全剩余系中的整数\par 
+由引理1得：$m_{2} x_{1}^{\prime} \equiv m_{2} x_{1}^{\prime \prime}\left(\bmod m_{1}\right), m_{1} x_{2}^{\prime} \equiv m_{1} x_{2}^{\prime \prime}\left(\bmod m_{2}\right) $\par 
+由引理2及$\left(m_{1}, m_{2}\right)=1$  得：$  x_{1}^{\prime} \equiv x_{1}^{\prime \prime}\left(\bmod m_{1}\right), x_{2}^{\prime} \equiv x_{2}^{\prime \prime}   \left(\bmod m_{2}\right) $\par 从而$x_{1}^{\prime}=x_{1}^{\prime \prime}, x_{2}^{\prime}=x_{2}^{\prime \prime}$ ，故$m_2x_1+m_1x_2$通过的$m_1m_2$个整数对模$m_1m_2$两两同余。\par
+%引理4——m2x1+m1x2过模m1m2完全剩余系
+
+\textbf{引理5}\quad 若$m_1,m_2$是两个互质的正整数，$x_1,x_2$分别通过模$m_1,m_2$的简化剩余系，则$m_2x_1+m_1x_2$通过模$m_1m_2$的简化剩余系\par
+\textbf{证明5}\quad 由于简化剩余系是一个完全剩余系中一切与模互质的整数组成的，只需证明 $ m_{2} x_{1}+m_{1} x_{2}  $通过模 $ m_{1} m_{2}  $的一 个完全剩余系中一切与模$  m_{1} m_{2} $ 互质的整数\par
+由引理4得：$x_{1}, x_{2} $ 分别通过模 $ m_{1}, m_{2}  $的完全剩余 系, $ m_{2} x_{1}+m_{1} x_{2}  $通过模 $ m_{1} m_{2} $ 的完全剩余系。 若 $ \left(x_{1}, m_{1}\right)  = \left(x_{2}, m_{2}\right)=1$ , 由 $ \left(m_{1}, m_{2}\right)=1 $ 得 $ \left(m_{2} x_{1}, m_{1}\right)=\left(m_{1} x_{2}\right. ,  \left.m_{2}\right)=1 $, 故  $\left(m_{2} x_{1}+m_{1} x_{2}, m_{1}\right)=1,\left(m_{2} x_{1}+m_{1} x_{2}, m_{2}\right)=1$ ，故$ \left(m_{2} x_{1}+m_{1} x_{2}, m_{1} m_{2}\right)=1 $\par  
+反之, 若 $ \left(m_{2} x_{1}+m_{1} x_{2}, m_{1} m_{2}\right)=1 $, 则$  \left(m_{2} x_{1}+m_{1} x_{2}, m_{1}\right)=\left(m_{2} x_{1}+m_{1} x_{2}, m_{2}\right)=1$ 由引理3得：$  \left(m_{2} x_{1}, m_{1}\right)=\left(m_{1} x_{2}, m_{2}\right)=1 $,而 $\left(m_{1}, m_{2}\right)=1$ , 故 $ \left(x_{1}\right. ,  \left.m_{1}\right)=\left(m_{2}, x_{2}\right)=1$ \par 
+综上$ \left(m_{2} x_{1}+m_{1} x_{2}, m_{1} m_{2}\right)=1 \iff \left(m_{2} x_{1}, m_{1}\right)=\left(m_{1} x_{2}\right. ,  \left.m_{2}\right)=1 $, 故   $ m_{2} x_{1}+m_{1} x_{2}  $通过模 $ m_{1} m_{2}  $的一 个完全剩余系中一切与模$  m_{1} m_{2} $ 互质的整数\par 
+%引理5——m2x1+m1x2过模m1m2简化剩余系
+
+\textbf{定理6}\quad 若 $ m_{1}, m_{2}  $是两个互质的正整数, 则 $ \varphi\left(m_{1} m_{2}\right)=   \varphi\left(m_{1}\right) \cdot \varphi\left(m_{2}\right)$\par
+\textbf{证明6}\quad 由引理5知, 若  $x_{1}, x_{2} $ 分别通过模  $m_{1}, m_{2} $ 的简化剩余 系, 则 $ m_{2} x_{1}+m_{1} x_{2} $ 通过模 $ m_{1} m_{2}$  的简化剩余系, 即 $ m_{2} x_{1}+   m_{1} x_{2}$  通过 $ \varphi\left(m_{1} m_{2}\right)$  个整数. 另一方面由于$  x_{1} $ 通过 $ \varphi\left(m_{1}\right) $ 个整 数, $ x_{2} $ 通过 $ \varphi\left(m_{2}\right) $ 个整数, 因此$  m_{2} x_{1}+m_{1} x_{2} $ 通过 $ \varphi\left(m_{1}\right) \varphi\left(m_{2}\right) $ 个整数. 故 $ \varphi\left(m_{1} m_{2}\right)=\varphi\left(m_{1}\right) \varphi\left(m_{2}\right)$ \par 
+%定理6——\phi(m1m2)=\phi(m1)\phi(m2)
+\quad  \par 
+
+
+
+\textbf{5.欧拉定理}\par
+
+\textbf{引理7}\quad 若 $(a, m)=1$, $x$  通过模 $ m $ 的简化剩余系, 则 $ a x $ 通过模 $ m $ 的简化剩余系\par 
+\textbf{证明7}\quad $a x  $通过  $\varphi(m)  $个整数, 由于$  (a, m)=1,(x, m)=1$ , 故 $ (a x, m)=1 $.反证,若$  a x_{1} \equiv a x_{2}(\bmod m) $, 由引理2, $ x_{1} \equiv   x_{2}(\bmod m)$ , 这与$x$  通过模 $ m $ 的简化剩余系矛盾, 故 $ a x $ 通过模 $ m $ 的简化剩余系成立\par  
+%引理7——x过简化剩余系,(a,x)=1,则ax亦过简化剩余系
+
+\textbf{定理8}\quad 设 $ m $ 是大于 1 的整数, $ (a, m)=1$ , 则 $ a^{\varphi(m)} \equiv 1(\bmod m)$\par 
+\textbf{证明8}\quad 设 $ r_{1}, r_{2}, \cdots, r_{\varphi(m)} $ 是模 $ m  $的简化剩余系, 则由引理7 , $ a r_{1}, a r_{2}, \cdots, a r_{\varphi(m)}  $也是模  m  的简化剩余系,故$\quad\left(a r_{1}\right) \cdots\left(a r_{\varphi(m)}\right) \equiv r_{1}r_{2} \cdots r_{\varphi(m)}(\bmod m)$\par 
+整理可得：$\quad a^{\varphi(m)}\left(r_{1} r_{2} \cdots r_{\varphi(m)}\right) \equiv r_{1} r_{2} \cdots r_{\varphi(m)}(\bmod m)$\par 
+而$\left(r_{1}, m\right)=\left(r_{2}, m\right)=\cdots=\left(r_{\varphi(m)}, m\right)=1$,故$\left(r_{1} r_{2} \cdots r_{\varphi(m)}, m\right) =1$\par 
+再用引理2即得：$ a^{\varphi(m)} \equiv 1(\bmod m)$\par
+%定理8——a^{\phi(m)}与1关于m同余
+\quad  \par 
+
+
+
+\textbf{6.费马定理}\par
+
+\textbf{引理9}\quad 设 $ a=p_{1}^{a_{1}} p_{2}^{a_{2}} \cdots p_{k}^{a_{k}} $,则$\varphi(a)=a\left(1-\frac{1}{p_{1}}\right)\left(1-\frac{1}{p_{2}}\right) \cdots\left(1-\frac{1}{p_{k}}\right) $\par 
+\textbf{证明9}\quad 由定理6可知$\varphi(a)=\varphi\left(p_{1}^{a_{1}}\right) \varphi\left(p_{2}^{a_{2}}\right) \cdots \varphi\left(p_{k}^{a_{k}}\right)$\par 
+往证：$ \varphi\left(p^{a}\right)=p^{a}-p^{a-1}$ . 由 $ \varphi(a) $ 的定义知  $\varphi\left(p^{\alpha}\right)  $等于 从 $ p^{\alpha} $ 减去  $1, \cdots, p^{\alpha} $ 中与 $ p^{\alpha}  $不互质的数的个数, 亦即等于从 $ p^{\alpha} $ 减 去 $ 1, \cdots, p^{a} $ 中与 $ p  $不互质的数的个数. 由于 $ p $ 是质数, 故  $\varphi\left(p^{a}\right)  $等 于从  $p^{\alpha}$  减去 $ 1, \cdots, p^{\alpha} $ 中被  $p $ 整除的数的个数.\par 
+由函数$[x]$的性质可知$  1, \cdots, p^{a}$  中被 $ p $ 整除的数的个数是 $ \left[\frac{p^{a}}{p}\right]=p^{a-1} $\par 
+故可得：$\varphi\left(p^{\alpha}\right)=p^{\alpha}-p^{\alpha-1} $\par 
+综上$\varphi(a) =\left(p_{1}^{a_{1}}-p_{1}^{a_{1}-1}\right)\left(p_{2}^{a_{2}}-p_{2}^{a_{2}-1}\right) \cdots\left(p_{k}^{a_{k}}-p_{k}^{a_{k}-1}\right) =a\left(1-\frac{1}{p_{1}}\right)\left(1-\frac{1}{p_{2}}\right) \cdots\left(1-\frac{1}{p_{k}}\right) $
+%引理9——求\phi(a)=a(1-1/p1)(1-1/p2)...(1-1/pn)
+
+\textbf{定理10}\quad 若 $ p $ 是素数,则$  a^{p} \equiv a(\bmod p)$.\par 
+\textbf{证明10}\quad 若 $ (a, p)=1 $, 由引理9得 $\varphi(p)=p(1-\frac{1}{p})=p-1$. 又由定理8可知 $ a^{p-1} \equiv 1(\bmod p) $，因而 $ a^{p} \equiv a(\bmod p)$. \par
+若 $ (a, p) \neq 1$ , 则$  p \mid a $, 故 $ a^{p} \equiv a\equiv 0(\bmod p) $.
+%定理10——a^p与a关于模p同余
+
+
+%================================================================================================================
+%================================================================================================================
+
+
+
+\subsection{RSA的实现及证明}
+
+\textbf{1.RSA实现步骤}\par
+
+(1)取两个尽量大且不相等的质数$p$和$q$,计算$N=pq$\par
+(2)计算$ \varphi\left(N\right)= \varphi\left(pq\right)=\varphi\left(p\right)\varphi\left(q\right)=(p-1)(q-1)$\par 
+(3)选取正整数$ e$ 满足 $ 1<\mathrm{e}< \varphi\left(N\right)$  并且 $ \mathrm{e}$  与 $  \varphi\left(N\right)$  互质, 即 $ (\mathrm{e},  \varphi\left(N\right))=1 $\par 
+(4)计算 $e$关于$  \varphi\left(N\right)  $的模逆元 $ d $, 即求 $ d  $满足 $ e d \equiv 1(\bmod \varphi\left(N\right))$\par 
+至此, RSA 算法的密钥已经产生, $ (e, N) $ 为公钥, $ (d, N) $ 为私钥（也可互换）\par 
+(5) 加密变换: 对明文 $ a$ , 可利用私钥  $(e,N)$ , 加密后变换为密文 $ b $\par 
+\qquad $ b \equiv a^{e}(\bmod N) $\par 
+(6) 解密变换: 对加密后的密文$b$, 可利用私钥 $ (d, N)$ , 解密变换后还原为  $\mathrm{a} $ \par 
+\qquad $b^{d} \equiv a^{ed} \equiv a^{1+k \varphi\left(N\right)} \equiv a(\bmod N)$\par 
+实际操作中$e,N$  被公开, 而$d$  被秘密保管.若有攻击者想获得私钥$d$,  就必须知道 $ \varphi(N) $. 而由 (2) 知, 求 $ \varphi(N)$  就需要知道$  N $ 的质因子$  p, q $. 当 $ p, q $ 的位数很大时,  按照现有的数学方法, 即使加上现有的超级电子计算机, 也不可能在限定时间内知道 $ \varphi(N) $ 的值, 因而不可能知道  d . 这就是说, RSA 的保密性能是很 好的. \upcite{初等数论} \par
+\quad  \par 
+
+
+
+\textbf{2.RSA实现的证明}\par
+
+往证：$a^{1+k \varphi(N)} \equiv a(\bmod N)$\par 
+（1）若$(a,N)=1$,则由定理8可知$ a^{\varphi(N)} \equiv 1(\bmod N)$，进而$ a^{k\varphi(N)} \equiv 1^k \equiv 1 (\bmod N)$，故$ a^{1+k\varphi(N)} \equiv a(\bmod N)$\par 
+（2）若$(a,N)\not =1$,只需证明$a^{1+k \varphi(N)} \equiv a(\bmod p),a^{1+k \varphi(N)} \equiv a(\bmod q)$\par 
+<2.1>如果$p$整除$a$，则$  p \mid a $,故$a^{1+k \varphi(N)} \equiv a \equiv 0 (\bmod p),a^{1+k \varphi(N)} \equiv a \equiv 0(\bmod q)$.\par 
+<2.2>如果$p$不整除$a$，则$(p,a)=1, \varphi\left(N\right)= \varphi\left(pq\right)=\varphi\left(p\right)\varphi\left(q\right)=(p-1)(q-1)$\par
+由定理10可知：$a^{(p-1)} \equiv 1(\bmod p) $,则$a^{k(p-1)(q-1)} \equiv 1^{k(q-1)} \equiv 1 (\bmod p) $\par 
+故可得：$a^{1+k \varphi(N)} \equiv a^{1+k (q-1)(p-1)}  \equiv a (\bmod p)$，同理可证：$a^{1+k \varphi(N)} \equiv a(\bmod q)$\par 
+综上：$a^{1+k \varphi(N)} \equiv a(\bmod p),a^{1+k \varphi(N)} \equiv a(\bmod q)$\par 
+
+
+%================================================================================================================
+%================================================================================================================
+
+
+\section{RSA算法的破解与防御}
+
+\subsection{RSA的破解方法}
+
+\textbf{1.因子分解攻击}\par
+
+由于该算法的安全性是建立在大整数因子分解的困难上，分解 $N $ 与求 $ \varphi(N)$  等价,若分解 出  $N $的因子, 则 RSA-N 是不安全的,因此分解 $ N$  是互联网中最明显的攻击方法. 通过计算$\varphi(N)=(p-1)(q-1)$从而确定$d \equiv e^{-1}(\bmod \varphi(N))$.\par 
+伴随着计算机技术的快速发展,国外已经具备了对 130位十进制整数进行因子分解的能力,而且采用数域筛选法可分解比RSA-129更大的数.\upcite{黑客破解}\par 
+\quad  \par 
+
+
+
+\textbf{2.小指数攻击}\par
+
+为了保证 RSA 算法的安全性，必须使得选择的大素数位数极大，从而导致 RSA 算法的加解密速度较慢。所以一些使用RSA算法进行加密的机构采用了一种提升RSA速度并且能使加密易于实现的解决方案——令公钥$e$取较小的值.\par 
+由于$b\equiv a^{e} (\bmod N)$, 同时也可以表示 为 $ a^{e}=k N+b$  .在实现加密时, 如果需要加密的明文 比较小并且选取的  $e$的值也很小, 则可能出现上式中$k$ 的值很小, 甚至当  $a^{e}<N$  时出现  $k=0 $ 的情况.\par 
+ $k=0$  时,  $b=a^e$ , 并且因为 $ e $ 的值不大, 可以直接对于所有可能范围内的$ e $值对已知 的明文$b$ 进行开 $e$ 次方的操作解出明文 $a$ 的值.\par 
+$k\neq 0 $ 时, 亦可对可能满足条件的 $ k $ 的值进行遍历, 同样可以求解出明文 $a $的值. \upcite{python破解} \par
+\quad  \par 
+
+
+
+\textbf{3.共模攻击}\par
+
+在使用 RSA 算法加密时，如果不同的用户使用的公钥中的模值$ n$ 相同时，算法体系存在共模攻击的可能性，可以在不需要对 $n$ 进行分解的情况下破解\upcite{共模攻击}.\par 
+若两个不同的用户使用公钥 $ \left(N, e_{1}\right)\left(N, e_{2}\right) $ 对同一信息进行加密得到不同的密文$  b_{1}, b_{2} $, 并且$  e_{1}, e_{2} $ 互质, 则根据最大公因数的性质, 必存在两整数 $s, t$  使得 $ s * e_{1}+t^{*} e_{2}=1$ \par
+故：$a=a^{1}=a^{s e_{1}+t e_{2}}$，再两边同时对模$N$取余\par 
+$a\bmod N=a=a^{se_1+te_2}\bmod N\equiv (a^{se_1}\bmod N)(a^{te_2}\bmod N)\bmod N$\par 
+$\equiv ((a^{e_1}\bmod N)^s\bmod N)((a^{e_2}\bmod N)^t\bmod N)\bmod N$\par 
+$=(b_1^s\bmod N)(b_2^t\bmod N)\bmod N$\par 
+可以表示为：$m=(b_1^s\bmod N)(b_2^t\bmod N)\bmod N$\upcite{python破解} \par 
+由上式可以看出，当使用相同的模 $N$ 以及互质的两个 $e_1,e_2$ 对同一明文进行加密时，可以利用求得的满足$se_1+te_2=1$ 的$ s$ 和$ t $以及密文 $b_1，b_2 $来求解出明文 $m$，而不需进行运算量巨大的大数分解.\par 
+利用扩展欧几里得算法可以求解出满足上述条件的 $s,t$,详细过程可见参考文献[4].\par 
+
+
+%================================================================================================================
+%================================================================================================================
+
+
+\subsection{防御方法}
+
+\textbf{1.针对因子分解攻击}\par
+
+(1)$p,q$选择差异较大的大素数，以确保分解$N$的困难性.\par 
+(2)$p,q$选择强素数，以确保因子分解攻击在有效时间内不会实现.\upcite{黑客破解}\par 
+(3)必须使$N$也达到足够大（600bit以上 ）,这样密钥长度一定会大于2048位,无法反求出私钥$d$而实施攻击.\upcite{黑客破解} \par 
+\quad  \par 
+
+
+\textbf{2.针对小指数攻击}\par
+
+(1)$e,d$都应取较大的值，以降低暴力破解的可能性.\par 
+(2)$e,d$用随机数填充，使得密钥的长度大于2048位，增大破解私钥$d$的难度.\par 
+\quad  \par 
+
+
+\textbf{3.针对共模攻击}\par
+用户不要共用同一个模数$ N$，使得只有通过推导密钥对才能恢复明文$a$,从而大大提高破译难度.
+
+
+%================================================================================================================
+%================================================================================================================
+
+\section{结语}
+
+本文分析了RSA加密算法的实现原理，并提出了几种可能的攻击手段及对应的防御措施。这些攻击方式有的需要极大的运算时间，在有效的时间段内很难实现；有的需要满足比较苛刻的条件才有可能完成。在实际操作中利用RSA算法进行加密时，对常见的几种攻击方式所需的条件进行注意和避免的话，仍然可以保证 RSA 算法的可靠性。\par 
+很遗憾笔者个人能力有限，本文对于RSA算法的攻击、防御、改进的讨论并不是十分深入。对于RSA的攻击方法,如：选择密文攻击、计时攻击、群体暴力破解等\upcite{黑客破解}；对RSA算法的改进，如多素数加密原理、快速分块模幂算法、双重 RSA 算法等\upcite{RSA原理}笔者也在学习中。但笔者认为，安全与平衡永远是处于一种相互制衡、此消彼长的状态，没有绝对的安全，也没有绝对安全的加密算法。伴随密码学与计算机技术的迅速发展 ，必然会出现更多、 更安全的加密算法，也会出现更丰富的针对新加密算法的破解方案。\par 
+
+
+
+
+
+
+
+
+
+
+
+
+% -----------参考文献 -------------------
+\phantomsection
+\addcontentsline{toc}{section}{参考文献} % 添加  "参考文献 " 到目录
+
+%\setlength{\bibsep}{6pt plus 2pt}
+\begin{thebibliography}{99}
+
+
+\bibitem{初等数论}
+闵嗣鹤 . 初等数论 [M]. 北京 : 高等教育出版社 ,2020.
+
+\bibitem{python破解}
+张文博，冯梅，李青，江波 . 基于 Python 的 RSA 加密算法及其几种破解方法的研究[J] . 信息系统工程 . 2020.12 . 132-134
+
+\bibitem{黑客破解}
+周绯菲 . RSA算法攻击手段与防御方案的探讨[J] . 交通部管理干部学院学报 . 2008.09 . 第18卷 第4期 . 38-41
+
+\bibitem{共模攻击}
+邹慧 , 余梅生 , 王建东 . 有效解决 RSA 共模攻击的素数生成方案 [J]. 计算机工程与应用 ,2004,27:88-89+153.
+
+\bibitem{RSA原理}
+蒋翔，胡静 . 基于 RSA 算法的改进方法研究[J] . 发展与创新 . 2018.10 . 251-254
+
+
+\end{thebibliography}
+
+
+\end{document} 

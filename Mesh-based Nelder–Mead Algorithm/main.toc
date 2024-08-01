@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{NM无约束优化算法}{4}{0}{1}
+\beamer@sectionintoc {2}{Mads不等式约束优化算法}{7}{0}{2}
+\beamer@sectionintoc {3}{Mads-NM不等式约束优化算法}{11}{0}{3}
+\beamer@sectionintoc {4}{数值实验效果比较}{14}{0}{4}

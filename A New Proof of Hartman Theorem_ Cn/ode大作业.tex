@@ -1,0 +1,374 @@
+%---------------------导言区---------------------------%
+\documentclass[12pt,a4paper,UTF8]{ctexart}
+	%10pt：正文字体为12pt，缺省为10pt；各层级字体大小会根据正文字体自动调整
+	%a4paper：纸张大小a4；
+	%UTF8：中文要求
+\usepackage{geometry}%用于设置上下左右页边距
+	\geometry{left=2.5cm,right=2.5cm,top=3.5cm,bottom=2.8cm}
+\usepackage{xeCJK,amsmath,paralist,enumerate,booktabs,multirow,graphicx,float,subfig,setspace,listings,lastpage,hyperref}
+	%xeCJK：中文字体（如楷体，作者和机构需要用到）的设置
+	%amsmath：数学公式
+	%paralist，enumerate：自定义项目符号
+	%booktabs：三线图，论文常用的表格风格
+	%multirow：复杂表格
+	%graphicx，float: 插入图片
+	%subfig：并排排版图片以及强制图表显示在“这里”[H]
+	%setspace：设置行间距等功能
+	\setlength{\parindent}{2em}%正文首行缩进两个汉字
+	%listings:用于排版各种代码；比如matlab的代码
+	\lstset{language=Matlab}%matlab代码
+	%lastpage:获取总页数;
+	%hyperref:超链接,和lastpage搭配.
+\usepackage{fancyhdr}
+	%fancyhdr：一个很强大的宏包，用于自定义设计页面风格并命名以供调用。
+	\pagestyle{fancy}
+	\rhead{Dec.2022}
+	\lhead{常微分方程课程作业}
+	\cfoot{Page \thepage/\pageref{LastPage}}  %当前页\总页数
+	
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%正文开始%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+%%-------------------标题与信息-----------------------%%
+
+\begin{center}
+  \LARGE\text{Hartman定理的一个证明}\par
+  \centering{\normalsize{\text{侯力广  521070910043  数学科学学院}}}\par
+\end{center}
+%%---------------------摘要---------------------------%%
+\begin{spacing}{0.7}
+	~
+\end{spacing}
+%\noindent\rule[0.1\baselineskip]{\textwidth}{0.5pt}
+\noindent \textbf{摘~要：} Hartman定理是双曲非线性常微分系统局部拓扑等价于线性常微分系统的一个著名定理。本文将利用微分拓扑几何的方法，给出Hartman定理的一个证明。
+
+\noindent \textbf{关键词：} Hartman定理；  双曲非线性常微分系统； 局部拓扑；微分拓扑几何；
+%\rule[0.3\baselineskip]{\textwidth}{0.5pt}
+\begin{spacing}{1.3}
+	~
+\end{spacing} 
+
+
+
+%%----------------------正文--------------------------%%
+\noindent{\large\textbf{1.符号说明}}
+\begin{spacing}{0.8}
+	~
+\end{spacing}
+本文引用的符号，意义与[1,2,3]相同。设系统
+\begin{equation}
+	\dot{\mathrm{X}}=\mathrm{V}(\mathrm{X}) \quad\left(\mathrm{X} \in \mathrm{R}^{n}\right)
+\end{equation}
+
+其右方向量场 $ \mathrm{V}(\mathrm{X}) \in \mathrm{R}^{n} $ 在原点的一个开邻域 $ W \in \mathrm{R}^{n} $ 内是有定义, 连续可微的。原点为 孤立奇点。
+令线 性 算子 $ A: \mathrm{R}^{n} \rightarrow \mathrm{R}^{\mathrm{n}}$  为 $ A=\left(\frac{\partial \mathrm{V}(\mathrm{X})}{\partial \mathrm{X}}\right)$ . 
+由于系统具有双曲非线性，$  A  $所对应的所有特征值 $ \lambda_{\mathrm{i}}  $的 实部均不为零, 即 $ \mathrm{R e} \lambda_{\mathrm{i}} \neq 0(i=1 、 2 \cdots n) $ 。
+由此在原点的充分小邻域内, (1) 式可以写成  
+$$\dot{\mathrm{X}}=A \mathrm{X}+\mathrm{O}(|\mathrm{X}|)$$
+\begin{equation}
+\text{或  }  \left\{\begin{array}{l}\dot{\mathrm{X}}_{1}=A_{-} \mathrm{X}_{1}+\mathrm{O}_{1}\left(\left|\mathrm{X}_{1}\right|+\left|\mathrm{X}_{2}\right|\right) \stackrel{\text { 记 }}{=} \mathrm{V}_{1} \\ \dot{\mathrm{X}}_{2}=A_{+} \mathrm{X}_{2}+\mathrm{O}_{2}\left(\left|\mathrm{X}_{1}\right|+\left|\mathrm{X}_{2}\right|\right) \stackrel{\text { 记 }}{=} \mathrm{V}_{2}\end{array}\right. 
+\end{equation}
+
+其中 $ \mathrm{V}_{1}, \mathrm{V}_{2} \in C^{\prime}, \mathrm{X} \in \mathrm{R}^{\mathrm{n}}, \mathrm{X}_{1} \in \mathrm{R}^{\mathrm{k}}, \mathrm{X}_{2} \in \mathrm{R}^{\mathrm{m}} \quad(k+m=n, k \geq 0, m \geq t 0),|\mathrm{X}|^{2}=   \left|\mathrm{X}_{1}\right|^{2}+\left|\mathrm{X}_{2}\right|^{2}(| \cdot| $  是欧氏范数 $ ) ,(A)=\left(\begin{array}{cc}A_{-} & 0 \\ 0 & A_{+}\end{array}\right) $
+
+$A_{-}: \mathrm{R}^{k} \rightarrow \mathrm{R}^{\mathrm{k}}  $所有特征值实部均负值, 即  $\operatorname{Re} \lambda_{i}<0(i=1 \cdots k) $
+
+$A_{+}: \mathrm{R}^{m} \rightarrow \mathrm{R}^{\mathrm{m}}  $所有特征值实部均正值, 即  $\operatorname{Re} \lambda_{i}>0(i=1 \cdots k) $
+\begin{equation*}
+\begin{aligned}
+	\lim _{|\mathrm{X}_1|+|\mathrm{X}_2| \rightarrow 0} \frac{\mathrm{O}_{1}\left(\left|\mathrm{X}_{1}\right|+\left|\mathrm{X}_{2}\right|\right)}{\left|\mathrm{X}_{1}\right|+\left|\mathrm{X}_{2}\right|}=\mathrm{O}_{1} \in \mathbf{R}^{\mathrm{k}} \\
+    \lim _{|\mathrm{X}_1|+|\mathrm{X}_2| \rightarrow 0} \frac{\mathrm{O}_{2}\left(\left|\mathrm{X}_{1}\right|+\left|\mathrm{X}_{2}\right|\right)}{\left|\mathrm{X}_{1}\right|+\left|\mathrm{X}_{2}\right|}=\mathrm{O}_{2} \in \mathbf{R}^{\mathrm{m}} 
+\end{aligned}
+\end{equation*}
+
+
+
+
+
+%--------------------------------%
+\begin{spacing}{0.9}
+	~
+\end{spacing}
+\noindent{\large\textbf{2.引理证明}}
+\begin{spacing}{0.8}
+		~
+\end{spacing}
+
+\textbf{【引理1】}考虑特殊系统
+
+\begin{equation}
+	\left\{\begin{array}{l}
+		\dot{\mathrm{X}}_{1}=A_{-} \mathrm{X}_{1}+\mathrm{O}_{1}\left(\left|\mathrm{X}_{1}\right|\right) \stackrel{\text { 记 }}{=} \mathrm{V}_{1}^{\prime} \\
+		\dot{\mathrm{X}}_{2}=A_{+} \mathrm{X}_{2}+\mathrm{O}_{2}\left(\left|\mathrm{X}_{2}\right|\right) \stackrel{\text { 记 }}{=} \mathrm{V}_{2}^{\prime}
+	\end{array}\right.
+\end{equation}
+
+若系统 (3) 其右方在原点的充分小邻域内有  $\mathrm{V}_{1}^{\prime}, \mathrm{V}_{2}^{\prime} \in C^{\prime} $, 令  $r_{i}^{2}=\left(\mathrm{X}_{\mathrm{i}}\right. ,  \left.\mathrm{X}_{\mathrm{i}}\right)(i=1,2) $, 则必存在  $\sigma_{i}>0(i=1,2)$  和正常数 $ \alpha_{1}>\beta_{1}>0,\beta_{2}>\alpha_{2}>0  $使得 $ r_{i}^{2}$  沿 向量场 $ \mathrm{V}_{i}^{\prime}(i=1,2) $ 的方向 导 数 $ \mathrm{L}_{\mathrm{v}_{1}^{\prime}}^{r_{i}^{2}} $ 应有下面不等式
+\begin{equation*}
+	\begin{array}{ll}
+		-\alpha_{1} r_{1}^{2}<\mathrm{L}_{\mathrm{v}_{1}^{\prime}}^{r_{1}^{2}}<-\beta_{1} r_{1}^{2} & \text { (对 } \left.\forall \left|\mathbf{X}_{1}\right|<\sigma_{1}\right)\\
+		\alpha_{2} r_{2}^{2}<\mathrm{L}_{\mathrm{v}_{2}^{\prime}}^{r_{2}^{2}}<\beta_{2} r_{2}^{2} & \text { (对 } \left.\forall \left|\mathbf{X}_{2}\right|<\sigma_{2}\right)
+	\end{array}
+\end{equation*}
+	
+\textbf{证 }先考虑系统 (3) 第一式，二次型$r_{1}^{2}=\left\langle \mathrm{X}_{1}, \mathrm{X}_{1}\right) $ 沿向量场  $\mathrm{V}_{1}^{\prime}$  的分向导数$\mathrm{L}_{\mathrm{v}_{1}^{\prime}}^{r_{1}^{2}}$有：  
+$$\mathrm{L}_{\mathrm{v}_{1}^{\prime}}^{r_{1}^{2}}=\mathrm{L}_{A_{-} \mathrm{X}_{1}}^{r_{1}^{2}}+L_{O_{1}\left(\left|\mathrm{X}_{1}\right|\right)}^{r_1^2}.\;$$
+在复化空 间$^{c} R^{k} $ 内考虑  $\mathrm{L}_{c A_{-} \mathbf{X}_{1}  }^{r_{1}^{\prime 2}} $其中$^{c}A_{-}:\; ^{c}\mathrm{R}^{k} \rightarrow ^{c}\mathrm{R}^{k}$ 是 $ A_{-} $的复化算子,  $\mathrm{Z}_{1}=\mathrm{X}_{1}+  i\mathrm{Y}_i\in\;^{c} R^{k}\left(\mathrm{X}_{1}, \mathrm{Y}_{1} \in R^{k}\right), r_{1}^{\prime 2}=\left(\mathrm{Z}_{1}, \mathrm{Z}_{1}\right) $ 。
+由[1]  $\S  22.4$  引理 4 知, 只要选定 “  $\varepsilon$-几乎真” 的酉基 $ \xi_{1}, \cdots \xi_{k} $ 下, 有 
+$$\left(A_{-}\right)=\left({ }^{c} A_{-}\right)=\left(\begin{array}{ccc}
+	\lambda_{1} & & a_{\mathrm{fe}} \\
+	& \ddots & \\
+	0 & & \lambda_{k}
+	\end{array}\right)$$
+ 其中 $ \left|a_{\mathrm{fe}}\right|<\varepsilon\left(f<e ;\;f, e=1\cdots k\right), \lambda_{1} \cdots \lambda_{\mathrm{k}} $ 为 $ A_{-} $的特 征值, 且 $ \operatorname{Re} \lambda_{i}<0 (i=1\cdots k) .$ 
+$$
+\begin{aligned}
+\mathrm{L}_{{ }^{c} A_{-} Z_{1}}^{r_{1}^{\prime 2}}=2 \operatorname{Re}\left({ }^{c} A_{-} \mathrm{Z}_{1}, \mathrm{Z}_{1}\right)&=2 \operatorname{Re}\left(\left(\xi_{1}, \cdots \xi_{k}\right)
+\left(\begin{array}{ccc}
+	\lambda_{1} & & a_{\mathrm{fe}} \\
+	& \ddots & \\
+	0 & & \lambda_{k}
+	\end{array}\right)
+\left(\begin{array}{c}
+Z_{1} \\
+\vdots \\
+Z_{k}
+\end{array}\right),
+\left(\xi_{1}, \cdots \xi_{k}\right)\left(\begin{array}{c}
+Z_{1} \\
+\vdots \\
+Z_{k}
+\end{array}\right)
+\right)\\
+&=2 \sum_{i=1}^{k}\left(\operatorname{Re} \lambda_{i}\right)\left(x_{i}^{2}+y_{i}^{2}\right)+2 \sum_{\mathrm{f<e}}^{k}\left(\operatorname{Re} a_{\mathrm{fe}}\right) Z_{\mathrm{f}} \cdot \bar{Z}_{\mathrm{e}}
+\end{aligned}
+$$
+
+由$\operatorname{Re} \lambda_{\mathrm{i}}<0$可知 $\sum\limits_{i=1}^{k}\left(\operatorname{Re} \lambda_{\mathrm{i}}\right)\left(x_{i}^{2}+y_{i}^{2}\right) $是负定二次型。
+又 由于$\left|a_{\mathrm{fe}} \right|<\varepsilon$, 故$\operatorname{Re} a_{\mathrm{f}} <\varepsilon $, 
+由[1]  $ \S 22.4 $ 引理 5 知, $\mathrm{L}_{{ }^{c} A_{-} Z_{1}}^{r_{1}^{\prime 2}}$限制在球$|\mathrm{X}_1|<\sigma$内，必存在$\alpha^{\prime}_{1}>\beta^{\prime}_{1}>0$的常数，使得
+$$-a_1^{\prime}\left|\mathbf{X}_1\right|^2<\mathrm{L}_{A_{-} \mathrm{X}_1}^{r_1^2}<\beta_1^{\prime}\left|\mathrm{X}_1\right|^2$$
+
+而对 $\mathrm{L}_{\mathrm{O}_1\left(\left|\mathrm{X}_1\right|\right)}^{r_1^2}=2 \operatorname{Re}\left(\mathrm{O}_1\left(\left|\mathrm{X}_1\right|\right), \mathrm{X}_1\right)=2 \operatorname{Re}\left(\mathrm{O}_1(1), \frac{\mathrm{X}_1}{\left|\mathrm{X}_1\right|}\right) \cdot
+\left|\mathrm{X}_1\right|^2$ 沿 $\mathrm{O}_1\left(\left|\mathrm{X}_1\right|\right)$ 向量场的方向导数, 其系数仍为一个无穷小量, 记为 $\mathrm{O}_1^{\prime}(1)$ 。
+据无穷小量性质, 对任 一 给定的 常 数 $0<\overline{r_1}<\beta_1^{\prime}$, 必存在 $0<\sigma_1<\sigma_1^{\prime}$, 对于 $\forall\left|\mathrm{X}_1\right|<\sigma_1$ 有 $|\mathrm{O}_1^{\prime}(1)|<\overline{r_1}$, 使得
+
+$$\left\|\mathrm{L}_{\mathrm{O}_1\left(\left|X_1\right|\right)} ^{r_1^2} \right\|<\overline{r_1}\left|\mathrm{X}_1\right|^2$$
+
+记 $\beta_1=\beta_1^{\prime}-\overline{r_1}>0, \alpha_1=\alpha_1^{\prime}+\overline{r_1}>0$，可得
+
+$$-\alpha_1 r_1^2=-\alpha_1\left|\mathrm{X}_1\right|^2<L_{v_1^{\prime}}^{r_1^2}<-\beta_1\left|\mathrm{X}_1\right|^2=-\beta_1 r_1^2 \quad\left(\forall\left|\mathrm{X}_1\right|<\sigma_1\right)$$
+
+同理，对（3）第二式进行如上讨论，可证引理1. 进一步，若将$\mathrm{X}_1,\mathrm{X}_2$限制在 $\left|\mathrm{X}_1\right|<\sigma_1,\left|\mathrm{X}_2\right|<\sigma_2$ 内, 其中 $\sigma_1, \sigma_2$ 均由引理 1 给出, 则有以下引理。
+
+
+
+
+
+
+
+\begin{spacing}{1.3}
+	~
+\end{spacing}
+\textbf{【引理2】}
+设$\left(\begin{array}{l}\varphi_1(t) \\ \varphi_2(t)\end{array}\right)$ 是系统 (3) 满足初值 $\left|\varphi_i(0)\right|=\delta_i<\sigma_i(i=1,2)$ 的任一非零解
+$\left(\delta_{\mathrm{i}}>0\right)$ . 做一实变量 $t$ 的函数 $\rho_{\mathrm{i}}(t)=\ln \frac{\left(\varphi_{\mathrm{i}}(t), \boldsymbol{\varphi}_{\mathrm{i}}(t)\right)}{\delta_i^2} \quad(i=1,2)$,则有
+
+$$\rho_{\mathrm{i}}: \mathbf{R} \cap\left\{t_{:}\left|\boldsymbol{\varphi}_{\mathrm{i}}(t)\right|<\sigma_{\mathrm{i}}\right\} \rightarrow \rho_{\mathrm{i}}\left(\mathbf{R} \cap\left\{t:\left|\boldsymbol{\varphi}_{\mathrm{i}}(t)\right|<\sigma_{\mathrm{i}}\right\}(i=1,2)\right.$$
+对每一$i$ 是一个微分同胚, 且有
+\begin{equation*}
+	\begin{aligned}
+	-&\alpha_1<\frac{\mathrm{d} \rho_1(t)}{\mathrm{d} t}<-\beta_1 \quad\left(\alpha_1>\beta_1>0\text{为常数} \right)\\
+    &\alpha_2<\frac{\mathrm{d} \rho_2(t)}{\mathrm{d} t}<\beta_2 \quad\;\,\;\left(\beta_2>\alpha_2>0 \text{为常数} \right)
+    \end{aligned}
+\end{equation*}
+
+\textbf{证 }
+$i=1$ 时, 令 $r_1^2=\left(\boldsymbol{\varphi}_1(t), \boldsymbol{\varphi}_1(t)\right)$，作实变量 $t$ 的函数
+$$
+\rho_1(t)=\ln \frac{\left(\varphi_1(t), \varphi_1(t)\right)}{\delta_1^2}=\ln \frac{r_1^2}{\delta_1^2}
+$$
+
+由$\frac{\mathrm{d} \rho_1(t)}{\mathrm{d} t}=\frac{\mathrm{L}_{\mathrm{V_1^{\prime}}}^{r_1^{2}}}{r_1^2}$的存在性可知，$\rho_1(t)$是可微的。结合引理1，对应于$\mathrm{L}_{\mathrm{V_1^{\prime}}}^{r_1^{2}}$的方向导数，必存在$\sigma_1>0$，当$\forall \left|\mathbf{X}_{1}\right|<\sigma_{1}$时，有$-\alpha_{1} r_{1}^{2}<\mathrm{L}_{\mathrm{v}_{1}^{\prime}}^{r_{1}^{2}}<-\beta_{1} r_{1}^{2} $成立。
+从而当$t \in R \cap\left\{t:\left|\varphi_1(t)\right|<\sigma_1\right\}$时，有不等式$-\alpha_1<\frac{\mathrm{d} \rho_1(t)}{\mathrm{d} t}<-\beta_1\left(\alpha_1>\beta_1>0\right.$ 为常数$)$成立，则可知$\frac{\mathrm{d} \rho_1(t)}{\mathrm{d} t} \neq 0$. 继而根据反函数存在定理，$\rho^{-1}_1$ 存在且可微，则有 $\rho_1: R \cap\left\{t:|\varphi(t)|<\sigma_1\right\} \rightarrow \rho_1\left(R \cap\left\{t:\left|\varphi_1(t)\right|<\sigma_1\right\}\right)$
+是微分同胚，且满足引理2不等式.
+
+同理可证$\rho_2: R \cap\left\{t:\left|\varphi_2(t)\right|<\sigma_2\right\} \rightarrow \rho_2\left(R \cap\left\{t:\left|\varphi_2(t)\right|<\sigma_2\right\}\right.$ 是微分同胚, 引理2成立。
+		
+
+
+
+
+\begin{spacing}{1.3}
+	~
+\end{spacing}
+\textbf{【引理3】}
+
+对每一 $\mathrm{X}=\left(\begin{array}{l}\mathrm{X}_1 \\ \mathrm{X}_2\end{array}\right) \neq 0$ ,其 中 $\mathrm{X}_1 \in \mathrm{R}^k, \mathrm{X}_2 \in \mathrm{R}^m \quad(k+m=n, k \geq 0, m \geq 0)$ $\left|\mathrm{X}_{\mathrm{i}}\right|<\sigma_{\mathrm{i}}\left(\sigma_{\mathrm{i}}>0\right)(i=1,2)$ 都有唯一形式
+$$
+\mathrm{X}=\left(\begin{array}{l}
+f_1^t \mathrm{x}_{10} \\
+f_2^t \mathrm{x}_{10}
+\end{array}\right)
+$$
+其 中 $\mathrm{X}_{10} \in \mathrm{R}^k, \mathrm{X}_{20} \in \mathrm{R}^m ,\left(\begin{array}{l}f_1^t \\ f_2^{t}\end{array}\right)$ 是系统 (3) 的相流
+$$
+\mathrm{X}_{\mathrm{i} 0} \in S_{\mathrm{i}}=\left\{\mathrm{X}_{\mathrm{i} 0} \mid\left(\mathrm{X}_{\mathrm{i} 0}, \mathrm{X}_{\mathrm{i} 0}\right)=\delta_i^2<\sigma_i^2\right\} \quad(i=1,2)
+$$
+\textbf{证 }设 $\left(\begin{array}{l}\varphi_1(t) \\ \varphi_z(t)\end{array}\right)$ 在区域 $\left|\varphi_i(t)\right|<\sigma_i(i=1,2)$ 内是系统 (3) 满足初值条件 $\varphi_i(0)=\mathrm{X}_i \neq 0(i=1,2)$ 的解。
+
+考虑实变量 $t$ 的函数, $\rho_i(t)=\ln \frac{\left(\varphi_i(t), \varphi_i(t)\right)}{\delta_i}(i=1,2)$ 其中 $\delta_i$ 的选取使得
+$\rho_{\mathrm{i}}(t)$ 在定义区域 $\boldsymbol{R} \cap\left\{t:\left|\varphi_{\mathrm{i}}(t)\right|<\sigma_{\mathrm{i}}\right\}$ 内必存在一 $t$ 值, 使得 $\left(\begin{array}{l}\rho_1(t) \\ \rho_2(t)\end{array}\right)=0 \quad(i=1,2)$.
+只须按如下选取 $t$ 值, 对满足 $\left(\varphi_1(\tau), \varphi_1(\tau)\right)=\delta_1^2<\sigma_1^2$ 的 $\tau$ 值代入 $\varphi_2(t)$ 的内积中, 记$\sigma_2^2>\delta_2^2=\left(\varphi_2(\tau), \varphi_2(\tau)\right)$, 则存在 $\tau$ 使得 $\left(\begin{array}{l}\rho_1(\tau) \\ \rho_2(\tau)\end{array}\right)=0$ 。 由引理 2 知, $\rho_1: \mathbf{R} \cap\{t:\left.\varphi_{\mathrm{i}}(t) \mid<\sigma_{\mathrm{i}}\right\} \rightarrow \rho_{\mathrm{i}}\left(\mathbf{R} \cap\left\{t:\left|\varphi_{\mathrm{i}}(t)\right|<\sigma_{\mathrm{i}} \mid\right)\right.$ 对每一 $i$ 是一个微分同胚, 且对 $t$ 值是双方单值的，
+则这样的$\tau$是唯一存在的，记 $\mathrm{X}_{\mathrm{i} 0}={\varphi}_{\mathrm{i}}(\tau)$, 有 $\mathrm{X}_{\mathrm{i} 0} \in S_{\mathrm{i}} \quad(i=1,2)$.
+
+由假设${\varphi}_{\mathrm{i}}(t)(i=1,2)$ 是满足初值条件 $\varphi_{\mathrm{i}}(0)=\mathrm{X}_{\mathrm{i}}$ 系统(3)的解，则此解可用相流 $\left(\begin{array}{l}f_1^t \\ f_2^t\end{array}\right)$ 来表示
+
+$$\left(\begin{array}{l}\mathrm{X}_{10} \\ \mathrm{X}_{20}\end{array}\right)=\left(\begin{array}{l}\varphi_1(\tau) \\ \varphi_2(\tau)\end{array}\right)=\left(\begin{array}{l}f_1^{\tau} \mathrm{X}_1 \\ f_2^{\tau} \mathrm{X}_2\end{array}\right) \quad\text{取} t=-\tau \quad\left(\begin{array}{l}\mathrm{X}_1 \\ \mathrm{X}_2\end{array}\right)=\left(\begin{array}{l}f_1^{t} \mathrm{X}_{10} \\ f_2^t \mathrm{X}_{20}\end{array}\right)$$
+
+%========================================%
+
+
+
+
+\begin{spacing}{1.0}
+	~
+\end{spacing}
+\noindent{\large\textbf{3.定理证明}}
+\begin{spacing}{0.8}
+		~
+\end{spacing}
+
+\textbf{【步骤1】}系统（3）局部拓扑等价于
+\begin{equation}
+	\left\{\begin{array}{l}\dot{\mathrm{Y}}_1=-\mathrm{Y}_1 \\ \dot{\mathrm{Y}}_2=\mathrm{Y}_2\end{array}\right.
+\end{equation}
+
+其中$\mathrm{Y}_1 \in \mathrm{R}^{\mathrm{k}}, \mathrm{Y}_2 \in \mathrm{R}^{\mathrm{m}}, k+m=n, k \geq 0, m \geq 0$
+
+\textbf{证 }设 $\left(\begin{array}{l}f_1^t \\ f_2^{t}\end{array}\right)$ 是系统 ( 3 ) 的相流， $\left(\begin{array}{l}g_1^t \\ g_2^{t}\end{array}\right)$ 是系绞 (4) 的相流。 
+
+$$S_1=\left\{\mathrm{X}_{10} \mid \mathrm{X}_{10} \in\right.
+\left.\mathrm{R}^{\mathrm{k}},\left(\mathrm{X}_{10}, \mathrm{X}_{10}\right)=\delta_1^2<\sigma_1^2\right\} , S_2=\left\{\mathrm{X}_{20} \mid \mathrm{X}_{20} \in \mathrm{R}^{\mathrm{m}},\left(\mathrm{X}_{20}, \mathrm{X}_{20}\right)=\delta_2^2<\sigma_2\right\} $$
+继而证明：
+
+1）若将 $\mathrm{X}_2$ 限制在 $\left|\mathrm{X}_2\right|<\sigma_2$ 内来确定映射 $h_1$
+$$
+h_1: \mathrm{R}^{\mathrm{k}} \cap\left\{\mathrm{X}_1: \mathrm{X}_1<\sigma_1\right\} \rightarrow \mathrm{R}^{\mathrm{k}} \cap\left\{\mathrm{X}_1:\left|\mathrm{X}_1\right|<\sigma_1\right\}
+$$
+则$h_1$是一一映射且双方连续的，满足$h_1 \circ f_1^t=g_1^t \circ h_1$，即$h_1$是一个同胚.
+故系统（3）第一式与系统（4）第一式的两个相流拓扑等价。
+
+2）若将 $\mathrm{X}_1$ 限制在 $\left|\mathrm{X}_1\right|<\sigma_1$ 内来确定映射 $h_2$
+$$
+h_2: \mathrm{R}^{\mathrm{m}} \cap\left\{\mathrm{X}_2: \mathrm{X}_2<\sigma_1\right\} \rightarrow \mathrm{R}^{\mathrm{m}} \cap\left\{\mathrm{X}_2:\left|\mathrm{X}_2\right|<\sigma_2\right\}
+$$
+则$h_2$是一一映射且双方连续的，满足$h_2 \circ f_2^t=g_2^t \circ h_2$，即$h_2$是一个同胚。
+故系统（3）第二式与系统（4）第二式的两个相流拓扑等价。
+
+\textbf{证 }1）与2）的证明类似，可采用构造映射的方法证明，详见[3] .
+
+3）拓扑等价系统的直积仍是拓扑等价的
+
+\textbf{证 } 限制$\left|\mathrm{X}_i\right|<\sigma_i(i=1,2)$ 范围内
+
+$$h_1: \mathrm{R}^{\mathrm{k}} \rightarrow \mathrm{R}^{\mathrm{k}} \quad h_2: \mathrm{R}^{\mathrm{m}} \rightarrow \mathrm{R}^{\mathrm{m}}\left(k+n=n, k \geq 0, m \geq 0\right)$$
+则存在一个变换 $h=\left(h_1, h_2\right),$ $h: \mathrm{R}^k+\mathrm{R}^m \rightarrow \mathrm{R}^k+\mathrm{R}^m$.
+由1）2）可知$h$是一个同胚，故系统（3）与系统（4）局部拓扑等价。
+
+
+\begin{spacing}{1.3}
+	~
+\end{spacing}
+\textbf{【步骤2】}系统（2）与系统（3）局部拓扑等价
+
+\textbf{证 }对系统（2）作变换
+$$
+\left\{\begin{array}{l}
+\mathrm{X}_1=\mathrm{Y}_1-\varphi\left(\mathrm{Y}_2\right) \\
+\mathrm{X}_2=\mathrm{Y}_2-\psi\left(\mathrm{Y}_1\right)
+\end{array}\right.
+$$
+
+整理得
+\begin{equation}
+\left\{\begin{array}{l}
+\dot{\mathrm{Y}}_1=A_{-} \mathrm{Y}_1+\mathrm{O}(\Delta)\left(\left|\mathrm{Y}_1\right|+\left|{\psi}\left(\mathrm{Y}_1\right)\right|\right) \\
+\dot{\mathrm{Y}}_2=A_{+} \mathrm{Y}_2+\mathrm{O}_2(\Delta)\left(\left|\mathrm{Y}_2\right|+\left|{\varphi}\left(\mathrm{Y}_2\right)\right|\right) \\
+\dot{{\psi}}\left(\mathrm{Y}_1\right)=A_{+} {\varphi}\left(\mathrm{Y}_1\right)-\mathrm{O}_2(\Delta)\left(\left|\mathrm{Y}_1\right|+\left|{\psi}\left(\mathrm{Y}_1\right)\right|\right) \\
+\dot{{\varphi}}\left(\mathrm{Y}_2\right)=A_{-} {\varphi}\left(\mathrm{Y}_2\right)-\mathrm{O}_1(\Delta)\left(\left|\mathrm{Y}_2\right|+\left|\varphi\left(\mathrm{Y}_2\right)\right|\right)
+\end{array}\right.
+\end{equation}
+
+其中$\Delta=\frac{\left|\mathrm{Y}_1-{\varphi}\left(\mathrm{Y}_2\right)\right|+\left|\mathrm{Y}_2-\psi\left(\mathrm{Y}_1\right)\right|}{\left|\mathrm{Y}_1\right|+\left|\mathrm{Y}_2\right|+\left|\varphi\left(\mathrm{Y}_2\right)\right|+\left|\psi\left(\mathrm{Y}_1\right)\right|}$为有界量。
+根据解的存在唯一性定理，解对初值连续依赖定理可知，系统（5）满足$\left.\mathrm{Y}_1=\mathrm{O}_1, \quad \mathrm{Y}_2=\mathrm{O}_2, \quad \varphi{( O _ { 2 }}\right)=\mathrm{O}_2, \quad \psi\left(\mathrm{O}_1\right)=\mathrm{O}_1$条件的解$\mathrm{Y}_1(t), \mathrm{Y}_2(t), {\varphi}\left(\mathrm{Y}_2\right), {\psi}\left(\mathrm{Y}_1\right)$唯一存在，且连续可微。
+在$(O_1,O_2)$充分小邻域内，对系统（2）所作变换的Jacobian行列式$J=\left(\frac{\partial \mathrm{X}_{\mathrm{i}}}{\partial \mathrm{Y}_{\mathrm{i}}}\right)\neq 0\; (i=1,2).$
+
+则由反函数存在定理知，在$(O_1,O_2)$充分小邻域内，该变换是一个微分同胚。
+
+又由 $\varphi\left(\mathrm{Y}_2\right), \psi\left(\mathrm{Y}_1\right)$ 可微性知，在 $\left(O_1, O_2\right)$ 充分小邻域内
+\begin{equation*}
+	\begin{aligned}
+		\varphi\left(\mathrm{Y}_2\right)=\int_0^1 \frac{\mathrm{d} \varphi\left(s \mathrm{Y}_2\right)}{\mathrm{d} s} \mathrm{~d} s=\int_0^1 \varphi^{\prime}\left(s \mathrm{Y}_2\right) \mathrm{d} s \cdot \mathrm{Y}_2\\
+        \psi\left(\mathrm{Y}_1\right)=\int_1^0 \frac{\mathrm{d} \psi\left(s \mathrm{Y}_1\right)}{\mathrm{d} s} \mathrm{~d} s=\int_0^1 \psi^{\prime}\left(s \mathrm{Y}_1\right) \mathrm{d} s \cdot \mathrm{Y}_1
+	\end{aligned}
+\end{equation*}
+其中$\int_0^1{\varphi}^{\prime}\left(s \mathrm{Y}_2\right) \mathrm{d} s, \; \int_0^1 \psi^{\prime}\left(s \mathrm{Y}_1\right) \mathrm{d} s \in C^{\prime}$，将两式代入系统（5）的前两式中整理得
+\begin{equation}
+	\left\{\begin{array}{l}
+		\dot{\mathrm{Y}}_1=A_{-} \mathrm{Y}_1+\mathrm{O}_1(\Delta)\left(1+\left|\int_0^1 {\psi}\left(s \mathrm{Y}_1\right) \mathrm{d} s\right|\right)\left|\mathrm{Y}_1\right|\\
+        \dot{\mathrm{Y}}_2=A_{+} \mathrm{Y}_2+\mathrm{O}_2(\Delta)\left(1+\left|\int_0^1 {\varphi}\left(s \mathrm{Y}_2\right) \mathrm{d} s\right|\right)\left|\mathrm{Y}_2\right|
+	\end{array}\right.
+\end{equation}
+其中$\mathrm{O}_1(\Delta)\left(1+\mid \int_0^1 \psi^{\prime}\left(s \mathrm{Y}_1\right) \mathrm{d} s\mid\right), \mathrm{O}_2(\Delta)\left(1+\mid \int_0^1 {\varphi}^{\prime}\left(s \mathrm{Y}_2\right) \mathrm{d} s\mid\right)$是有界量，且仍为无穷小量，
+故系统（2）与系统（6）是局部拓扑等价的。而系统（6）与系统（3）形式相同，故系统（2）与系统（3）也是局部拓扑等价的。
+
+
+\begin{spacing}{1.3}
+	~
+\end{spacing}
+\textbf{【步骤3】}（Hartman定理）系统（1）在原点的充分小邻域内局部等价于系统
+\begin{equation}
+	\left\{\begin{array}{l}\dot{\mathrm{X}}_1=A_{-} \mathrm{X}_1 \\ \dot{\mathrm{X}}_2=A_{+} \mathrm{X}_2\end{array}\right.
+\end{equation}
+
+
+\textbf{证 }因为$\mathrm{V}(\mathrm{X})\in C^{\prime}$，所以在原点的充分小邻域内，系统（1）可以写成系统（2）的形式。由步骤2可知，系统（2）局部拓扑等价与系统（3），而由步骤1知，系统（3）局部拓扑等价于系统（4）。又因为系统（7）是系统（3）的特殊情况$\left(\mathrm{O}_1\left|\mathrm{X}_1\right|=\mathrm{O}_1, \mathrm{O}_2\left|\mathrm{X}_2\right|=\mathrm{O}_2\right)$，所以根据上述引理1-3及步骤1的论证，可得系统（4）局部拓扑等价于系统（7），则系统（1）局部拓扑等价于系统（7）.
+
+
+
+
+
+%调整参考文献顺序，检查书写错误%
+
+
+
+
+
+
+% -----------参考文献 ----------------------------------%%
+\newpage %换页
+\phantomsection
+\addcontentsline{toc}{section}{参考文献} % 添加  "参考文献 " 到目录
+
+\begin{thebibliography}{99}
+
+
+\bibitem{1}
+Arnold V I.Ordinary Differential Equations[M]. Translated and edited dy RA Silverman.USA.M.I.T.1973
+\bibitem{2}
+阿诺尔德 B N著.沈家踖,周宝熙等译.常微分方程[M].北京：料学出版社,1985
+\bibitem{3}
+李冬梅. Hartman 定理的一个新证[J]. 哈尔滨科学技术大学学报 14(2). 1990.  195-202
+\bibitem{4}
+李冬梅. Hartman 定理的一个新证及推论[D]. 哈尔滨科学技术大学硕士研究生毕业论文， 1986
+
+\end{thebibliography}
+
+
+
+
+\end{document}
