@@ -1,5 +1,5 @@
 # Temples-Assignments
 
-Here are the course assignments I completed during my undergraduate years in SJTU, including reports in Beamer, LaTeX, and Markdown formats. 
+Here are the course assignments I completed during my undergraduate years in SJTU, including the following contents. 
 
-The PDF files of the reports are all listed for brief viewing.
+Feel free to use these LaTeX, Beamer, and Markdown templates as needed.
