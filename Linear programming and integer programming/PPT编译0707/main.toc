@@ -1,0 +1,3 @@
+\beamer@sectionintoc {1}{数学规划}{2}{0}{1}
+\beamer@sectionintoc {2}{线性规划}{4}{0}{2}
+\beamer@sectionintoc {3}{整数规划}{17}{0}{3}
