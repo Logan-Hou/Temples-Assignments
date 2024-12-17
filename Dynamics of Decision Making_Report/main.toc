@@ -1,0 +1,17 @@
+\contentsline {section}{\numberline {1}Introduction}{4}{section.1}%
+\contentsline {section}{\numberline {2}Perceptual decision making}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Perception of motion}{5}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Place of decision making}{6}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Competition through common inhibition}{8}{section.3}%
+\contentsline {section}{\numberline {4}Dynamics of decision making}{10}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Model with three populations}{10}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Effective inhibition}{11}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Phase plane analysis}{13}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Formal winner-take-all networks}{14}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Alternative decision models}{15}{section.5}%
+\contentsline {subsection}{\numberline {5.1}The energy picture}{15}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Drift-diffusion model}{17}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Human decisions, determinism and free will}{18}{section.6}%
+\contentsline {subsection}{\numberline {6.1}The Libet experiment}{18}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Relevant and irrelevant decisions - a critique}{19}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Summary}{20}{section.7}%

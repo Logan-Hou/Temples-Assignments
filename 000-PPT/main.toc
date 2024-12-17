@@ -1,4 +1,0 @@
-\beamer@sectionintoc {1}{Background Materials}{4}{0}{1}
-\beamer@sectionintoc {2}{Compact Manifolds without Boundary}{9}{0}{2}
-\beamer@sectionintoc {3}{Complete Manifolds without Boundary}{11}{0}{3}
-\beamer@sectionintoc {4}{Compact Manifolds with Boundary}{13}{0}{4}
